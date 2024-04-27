@@ -29,15 +29,81 @@ entities:
       - name: notesid
         type: string
         required: true
+  country: &country
+    name: country
+    description: Country
+    baselineattributes: *recordAttributes
+    additionalattributes:
+      - name: code
+        type: string
+        required: true
+  company: &company
+    name: company
+    description: Company
+    baselineattributes: *recordAttributes
+    additionalattributes:
+      - name: vatnumber
+        type: string
+        required: true
+      - name: phonenumber
+        type: string
+        required: false
+      - name: address
+        type: string
+        required: false
+      - name: city
+        type: string
+        required: false
+      - name: postalcode
+        type: string
+        required: false
+      - name: country
+        type: reference
+        entity: *country
+        required: false
+  system: &system
+    name: system
+    description: System
+    baselineattributes: *recordAttributes
+    additionalattributes:
+      - name: version
+        type: string
+        required: true
+
   user: &user
     name: user
     description: User
     baselineattributes: *recordAttributes
     additionalattributes:
-      - name: email
+      - name: system
+        type: reference
+        entity: *system
+        required: true
+      - name: fullname
         type: string
         required: true
-      - name: companyname
+  relation: &relation
+    name: relation
+    description: Relation
+    baselineattributes: *recordAttributes
+    additionalattributes:
+      - name: relation
+        type: reference
+        entity: *company
+        required: false
+      - name: relationtype
+        type: string
+        required: false
+      - name: groups
+        type: array
+        entity: *group
+
+  person: &person
+    name: person
+    description: Person
+    baselineattributes: *recordAttributes
+    additionalattributes:
+      - name: email
         type: string
         required: true
       - name: firstname
@@ -49,15 +115,13 @@ entities:
       - name: phonenumber
         type: string
         required: false
-      - name: sendemail
-        type: boolean
+      - name: governmentid
+        type: string
         required: false
-      - name: sendsms
-        type: boolean
-        required: false
-      - name: groups
+      - name: users
         type: array
-        entity: *group
+        entity: *relation
+        required: false
 
 models:
   itemMethods: &itemMethods

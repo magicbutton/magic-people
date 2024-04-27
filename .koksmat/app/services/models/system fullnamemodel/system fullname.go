@@ -6,32 +6,27 @@ keep: false
 ---
 */   
 //GenerateGoModel v1
-package groupmodel
+package system fullnamemodel
 import (
 	"encoding/json"
 	"time"
     
 )
 
-func UnmarshalGroup(data []byte) (Group, error) {
-	var r Group
+func UnmarshalUser(data []byte) (User, error) {
+	var r User
 	err := json.Unmarshal(data, &r)
 	return r, err
 }
 
-func (r *Group) Marshal() ([]byte, error) {
+func (r *User) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
-type Group struct {
+type User struct {
     ID        int    `json:"id"`
     CreatedAt time.Time `json:"created_at"`
     UpdatedAt time.Time `json:"updated_at"`
-        Tenant string `json:"tenant"`
-    Name string `json:"name"`
-    Description string `json:"description"`
-    Hidden bool `json:"hidden"`
-    Notesid string `json:"notesid"`
-
+    
 }
 

@@ -9,7 +9,7 @@ keep: false
 
 
 
-CREATE TABLE public.group
+CREATE TABLE public.country
 (
     id SERIAL PRIMARY KEY,
     created_at timestamp with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -18,8 +18,7 @@ CREATE TABLE public.group
     ,tenant character varying COLLATE pg_catalog."default"  NOT NULL
     ,name character varying COLLATE pg_catalog."default"  NOT NULL
     ,description character varying COLLATE pg_catalog."default" 
-    ,hidden boolean  
-    ,notesid character varying COLLATE pg_catalog."default"  NOT NULL
+    ,code character varying COLLATE pg_catalog."default"  NOT NULL
 
 
 );
@@ -29,5 +28,5 @@ CREATE TABLE public.group
 
 ---- create above / drop below ----
 
-DROP TABLE public.group;
+DROP TABLE public.country;
 

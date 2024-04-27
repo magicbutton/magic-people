@@ -16,7 +16,7 @@ keep: false
     
     func TestGroupread(t *testing.T) {
                     
-            result,err := group.GroupRead(-1)
+            result,err := group.GroupRead(".")
             if err != nil {
                 t.Errorf("Error %s", err)
             }

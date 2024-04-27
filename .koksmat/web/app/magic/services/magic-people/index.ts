@@ -18,6 +18,7 @@ export interface AppMap {
     services: Service[]
 }
 export const pagemap : AppMap = {
+  "name": "people",
   "services": [
     {
       "name": "user",
@@ -59,7 +60,6 @@ export const pagemap : AppMap = {
         }
       ]
     }
-  ],
-  "name": "people"
+  ]
 }
 

@@ -17,7 +17,7 @@ keep: false
     func TestGroupdelete(t *testing.T) {
                 // noma4.1.1
         
-        err := group.GroupDelete(-1)
+        err := group.GroupDelete(".")
         if err != nil {
             t.Errorf("Error %s", err)
         }

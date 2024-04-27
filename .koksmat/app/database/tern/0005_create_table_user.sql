@@ -9,7 +9,7 @@ keep: false
 
 
 
-CREATE TABLE public.group
+CREATE TABLE public.user
 (
     id SERIAL PRIMARY KEY,
     created_at timestamp with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -18,16 +18,21 @@ CREATE TABLE public.group
     ,tenant character varying COLLATE pg_catalog."default"  NOT NULL
     ,name character varying COLLATE pg_catalog."default"  NOT NULL
     ,description character varying COLLATE pg_catalog."default" 
-    ,hidden boolean  
-    ,notesid character varying COLLATE pg_catalog."default"  NOT NULL
+    ,system_id int   NOT NULL
+    ,fullname character varying COLLATE pg_catalog."default"  NOT NULL
 
 
 );
 
-
+                ALTER TABLE IF EXISTS public.user
+                ADD FOREIGN KEY (system_id)
+                REFERENCES public.system (id) MATCH SIMPLE
+                ON UPDATE NO ACTION
+                ON DELETE NO ACTION
+                NOT VALID;
 
 
 ---- create above / drop below ----
 
-DROP TABLE public.group;
+DROP TABLE public.user;
 

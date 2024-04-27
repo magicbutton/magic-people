@@ -17,7 +17,7 @@ import (
 type Group struct {
 	bun.BaseModel `bun:"table:group,alias:group"`
 
-	ID             int64     `bun:"id,pk,autoincrement"`
+	ID             int     `bun:"id,pk,autoincrement"`
 	CreatedAt      time.Time `bun:",nullzero,notnull,default:current_timestamp"`
 	UpdatedAt      time.Time `bun:",nullzero,notnull,default:current_timestamp"`
 	DeletedAt      time.Time `bun:",soft_delete,nullzero"`

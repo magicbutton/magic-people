@@ -17,7 +17,7 @@ keep: false
     func TestUserdelete(t *testing.T) {
                 // noma4.1.1
         
-        err := user.UserDelete(-1)
+        err := user.UserDelete(".")
         if err != nil {
             t.Errorf("Error %s", err)
         }

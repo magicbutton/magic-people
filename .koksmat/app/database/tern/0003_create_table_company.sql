@@ -9,7 +9,7 @@ keep: false
 
 
 
-CREATE TABLE public.group
+CREATE TABLE public.company
 (
     id SERIAL PRIMARY KEY,
     created_at timestamp with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -18,16 +18,25 @@ CREATE TABLE public.group
     ,tenant character varying COLLATE pg_catalog."default"  NOT NULL
     ,name character varying COLLATE pg_catalog."default"  NOT NULL
     ,description character varying COLLATE pg_catalog."default" 
-    ,hidden boolean  
-    ,notesid character varying COLLATE pg_catalog."default"  NOT NULL
+    ,vatnumber character varying COLLATE pg_catalog."default"  NOT NULL
+    ,phonenumber character varying COLLATE pg_catalog."default" 
+    ,address character varying COLLATE pg_catalog."default" 
+    ,city character varying COLLATE pg_catalog."default" 
+    ,postalcode character varying COLLATE pg_catalog."default" 
+    ,country_id int  
 
 
 );
 
-
+                ALTER TABLE IF EXISTS public.company
+                ADD FOREIGN KEY (country_id)
+                REFERENCES public.country (id) MATCH SIMPLE
+                ON UPDATE NO ACTION
+                ON DELETE NO ACTION
+                NOT VALID;
 
 
 ---- create above / drop below ----
 
-DROP TABLE public.group;
+DROP TABLE public.company;
 

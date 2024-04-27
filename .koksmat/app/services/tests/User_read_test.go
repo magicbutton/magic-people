@@ -16,7 +16,7 @@ keep: false
     
     func TestUserread(t *testing.T) {
                     
-            result,err := user.UserRead(-1)
+            result,err := user.UserRead(".")
             if err != nil {
                 t.Errorf("Error %s", err)
             }

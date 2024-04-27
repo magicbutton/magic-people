@@ -57,6 +57,143 @@
         }
       ]
     },
+    "country": {
+      "name": "country",
+      "description": "Country",
+      "baselineattributes": [
+        {
+          "name": "tenant",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "additionalattributes": [
+        {
+          "name": "code",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "company": {
+      "name": "company",
+      "description": "Company",
+      "baselineattributes": [
+        {
+          "name": "tenant",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "additionalattributes": [
+        {
+          "name": "vatnumber",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "phonenumber",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "address",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "city",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "postalcode",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "country",
+          "type": "reference",
+          "entity": {
+            "name": "country",
+            "description": "Country",
+            "baselineattributes": [
+              {
+                "name": "tenant",
+                "type": "string",
+                "required": true
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "required": true
+              },
+              {
+                "name": "description",
+                "type": "string",
+                "required": false
+              }
+            ],
+            "additionalattributes": [
+              {
+                "name": "code",
+                "type": "string",
+                "required": true
+              }
+            ]
+          },
+          "required": false
+        }
+      ]
+    },
+    "system": {
+      "name": "system",
+      "description": "System",
+      "baselineattributes": [
+        {
+          "name": "tenant",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "additionalattributes": [
+        {
+          "name": "version",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
     "user": {
       "name": "user",
       "description": "User",
@@ -79,38 +216,155 @@
       ],
       "additionalattributes": [
         {
-          "name": "email",
+          "name": "system",
+          "type": "reference",
+          "entity": {
+            "name": "system",
+            "description": "System",
+            "baselineattributes": [
+              {
+                "name": "tenant",
+                "type": "string",
+                "required": true
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "required": true
+              },
+              {
+                "name": "description",
+                "type": "string",
+                "required": false
+              }
+            ],
+            "additionalattributes": [
+              {
+                "name": "version",
+                "type": "string",
+                "required": true
+              }
+            ]
+          },
+          "required": true
+        },
+        {
+          "name": "fullname",
+          "type": "string",
+          "required": true
+        }
+      ]
+    },
+    "relation": {
+      "name": "relation",
+      "description": "Relation",
+      "baselineattributes": [
+        {
+          "name": "tenant",
           "type": "string",
           "required": true
         },
         {
-          "name": "companyname",
+          "name": "name",
           "type": "string",
           "required": true
         },
         {
-          "name": "firstname",
+          "name": "description",
           "type": "string",
-          "required": true
-        },
+          "required": false
+        }
+      ],
+      "additionalattributes": [
         {
-          "name": "lastname",
-          "type": "string",
-          "required": true
-        },
-        {
-          "name": "phonenumber",
-          "type": "string",
+          "name": "relation",
+          "type": "reference",
+          "entity": {
+            "name": "company",
+            "description": "Company",
+            "baselineattributes": [
+              {
+                "name": "tenant",
+                "type": "string",
+                "required": true
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "required": true
+              },
+              {
+                "name": "description",
+                "type": "string",
+                "required": false
+              }
+            ],
+            "additionalattributes": [
+              {
+                "name": "vatnumber",
+                "type": "string",
+                "required": true
+              },
+              {
+                "name": "phonenumber",
+                "type": "string",
+                "required": false
+              },
+              {
+                "name": "address",
+                "type": "string",
+                "required": false
+              },
+              {
+                "name": "city",
+                "type": "string",
+                "required": false
+              },
+              {
+                "name": "postalcode",
+                "type": "string",
+                "required": false
+              },
+              {
+                "name": "country",
+                "type": "reference",
+                "entity": {
+                  "name": "country",
+                  "description": "Country",
+                  "baselineattributes": [
+                    {
+                      "name": "tenant",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "name",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "description",
+                      "type": "string",
+                      "required": false
+                    }
+                  ],
+                  "additionalattributes": [
+                    {
+                      "name": "code",
+                      "type": "string",
+                      "required": true
+                    }
+                  ]
+                },
+                "required": false
+              }
+            ]
+          },
           "required": false
         },
         {
-          "name": "sendemail",
-          "type": "boolean",
-          "required": false
-        },
-        {
-          "name": "sendsms",
-          "type": "boolean",
+          "name": "relationtype",
+          "type": "string",
           "required": false
         },
         {
@@ -149,6 +403,210 @@
               }
             ]
           }
+        }
+      ]
+    },
+    "person": {
+      "name": "person",
+      "description": "Person",
+      "baselineattributes": [
+        {
+          "name": "tenant",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false
+        }
+      ],
+      "additionalattributes": [
+        {
+          "name": "email",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "firstname",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "lastname",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "phonenumber",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "governmentid",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "users",
+          "type": "array",
+          "entity": {
+            "name": "relation",
+            "description": "Relation",
+            "baselineattributes": [
+              {
+                "name": "tenant",
+                "type": "string",
+                "required": true
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "required": true
+              },
+              {
+                "name": "description",
+                "type": "string",
+                "required": false
+              }
+            ],
+            "additionalattributes": [
+              {
+                "name": "relation",
+                "type": "reference",
+                "entity": {
+                  "name": "company",
+                  "description": "Company",
+                  "baselineattributes": [
+                    {
+                      "name": "tenant",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "name",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "description",
+                      "type": "string",
+                      "required": false
+                    }
+                  ],
+                  "additionalattributes": [
+                    {
+                      "name": "vatnumber",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "phonenumber",
+                      "type": "string",
+                      "required": false
+                    },
+                    {
+                      "name": "address",
+                      "type": "string",
+                      "required": false
+                    },
+                    {
+                      "name": "city",
+                      "type": "string",
+                      "required": false
+                    },
+                    {
+                      "name": "postalcode",
+                      "type": "string",
+                      "required": false
+                    },
+                    {
+                      "name": "country",
+                      "type": "reference",
+                      "entity": {
+                        "name": "country",
+                        "description": "Country",
+                        "baselineattributes": [
+                          {
+                            "name": "tenant",
+                            "type": "string",
+                            "required": true
+                          },
+                          {
+                            "name": "name",
+                            "type": "string",
+                            "required": true
+                          },
+                          {
+                            "name": "description",
+                            "type": "string",
+                            "required": false
+                          }
+                        ],
+                        "additionalattributes": [
+                          {
+                            "name": "code",
+                            "type": "string",
+                            "required": true
+                          }
+                        ]
+                      },
+                      "required": false
+                    }
+                  ]
+                },
+                "required": false
+              },
+              {
+                "name": "relationtype",
+                "type": "string",
+                "required": false
+              },
+              {
+                "name": "groups",
+                "type": "array",
+                "entity": {
+                  "name": "group",
+                  "description": "Group",
+                  "baselineattributes": [
+                    {
+                      "name": "tenant",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "name",
+                      "type": "string",
+                      "required": true
+                    },
+                    {
+                      "name": "description",
+                      "type": "string",
+                      "required": false
+                    }
+                  ],
+                  "additionalattributes": [
+                    {
+                      "name": "hidden",
+                      "type": "boolean",
+                      "required": false
+                    },
+                    {
+                      "name": "notesid",
+                      "type": "string",
+                      "required": true
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "required": false
         }
       ]
     }
@@ -262,46 +720,11 @@
           ],
           "additionalattributes": [
             {
-              "name": "email",
-              "type": "string",
-              "required": true
-            },
-            {
-              "name": "companyname",
-              "type": "string",
-              "required": true
-            },
-            {
-              "name": "firstname",
-              "type": "string",
-              "required": true
-            },
-            {
-              "name": "lastname",
-              "type": "string",
-              "required": true
-            },
-            {
-              "name": "phonenumber",
-              "type": "string",
-              "required": false
-            },
-            {
-              "name": "sendemail",
-              "type": "boolean",
-              "required": false
-            },
-            {
-              "name": "sendsms",
-              "type": "boolean",
-              "required": false
-            },
-            {
-              "name": "groups",
-              "type": "array",
+              "name": "system",
+              "type": "reference",
               "entity": {
-                "name": "group",
-                "description": "Group",
+                "name": "system",
+                "description": "System",
                 "baselineattributes": [
                   {
                     "name": "tenant",
@@ -321,17 +744,18 @@
                 ],
                 "additionalattributes": [
                   {
-                    "name": "hidden",
-                    "type": "boolean",
-                    "required": false
-                  },
-                  {
-                    "name": "notesid",
+                    "name": "version",
                     "type": "string",
                     "required": true
                   }
                 ]
-              }
+              },
+              "required": true
+            },
+            {
+              "name": "fullname",
+              "type": "string",
+              "required": true
             }
           ]
         }
