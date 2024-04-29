@@ -430,7 +430,12 @@
         {
           "name": "email",
           "type": "string",
-          "required": true
+          "required": false
+        },
+        {
+          "name": "displayname",
+          "type": "string",
+          "required": false
         },
         {
           "name": "firstname",
@@ -443,13 +448,41 @@
           "required": true
         },
         {
-          "name": "phonenumber",
+          "name": "uniqueid",
           "type": "string",
-          "required": false
+          "required": true
         },
         {
-          "name": "governmentid",
-          "type": "string",
+          "name": "nationality",
+          "type": "reference",
+          "entity": {
+            "name": "country",
+            "description": "Country",
+            "baselineattributes": [
+              {
+                "name": "tenant",
+                "type": "string",
+                "required": true
+              },
+              {
+                "name": "name",
+                "type": "string",
+                "required": true
+              },
+              {
+                "name": "description",
+                "type": "string",
+                "required": false
+              }
+            ],
+            "additionalattributes": [
+              {
+                "name": "code",
+                "type": "string",
+                "required": true
+              }
+            ]
+          },
           "required": false
         },
         {
@@ -873,6 +906,961 @@
             },
             {
               "name": "notesid",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      },
+      "methods": [
+        {
+          "name": "read",
+          "description": "Read a single item",
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The id of the item",
+              "type": "int64",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "create",
+          "description": "Create a new item",
+          "parameters": [
+            {
+              "name": "item",
+              "description": "The item to create",
+              "type": "object",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "update",
+          "description": "Update an existing item",
+          "parameters": [
+            {
+              "name": "item",
+              "description": "The item to update",
+              "type": "object",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "delete",
+          "description": "Delete an existing item",
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The id of the item",
+              "type": "int64",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "search",
+          "description": "Search for items",
+          "parameters": [
+            {
+              "name": "query",
+              "description": "The search query",
+              "type": "string",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "page"
+          }
+        }
+      ]
+    },
+    {
+      "name": "country",
+      "description": "Manage Countries",
+      "entity": {
+        "type": "record",
+        "model": "country",
+        "objectname": "Country",
+        "entity": {
+          "name": "country",
+          "description": "Country",
+          "baselineattributes": [
+            {
+              "name": "tenant",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": false
+            }
+          ],
+          "additionalattributes": [
+            {
+              "name": "code",
+              "type": "string",
+              "required": true
+            }
+          ]
+        }
+      },
+      "methods": [
+        {
+          "name": "read",
+          "description": "Read a single item",
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The id of the item",
+              "type": "int64",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "create",
+          "description": "Create a new item",
+          "parameters": [
+            {
+              "name": "item",
+              "description": "The item to create",
+              "type": "object",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "update",
+          "description": "Update an existing item",
+          "parameters": [
+            {
+              "name": "item",
+              "description": "The item to update",
+              "type": "object",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "delete",
+          "description": "Delete an existing item",
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The id of the item",
+              "type": "int64",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "search",
+          "description": "Search for items",
+          "parameters": [
+            {
+              "name": "query",
+              "description": "The search query",
+              "type": "string",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "page"
+          }
+        }
+      ]
+    },
+    {
+      "name": "company",
+      "description": "Manage Companies",
+      "entity": {
+        "type": "record",
+        "model": "company",
+        "objectname": "Company",
+        "entity": {
+          "name": "company",
+          "description": "Company",
+          "baselineattributes": [
+            {
+              "name": "tenant",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": false
+            }
+          ],
+          "additionalattributes": [
+            {
+              "name": "vatnumber",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "phonenumber",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "address",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "city",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "postalcode",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "country",
+              "type": "reference",
+              "entity": {
+                "name": "country",
+                "description": "Country",
+                "baselineattributes": [
+                  {
+                    "name": "tenant",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "description",
+                    "type": "string",
+                    "required": false
+                  }
+                ],
+                "additionalattributes": [
+                  {
+                    "name": "code",
+                    "type": "string",
+                    "required": true
+                  }
+                ]
+              },
+              "required": false
+            }
+          ]
+        }
+      },
+      "methods": [
+        {
+          "name": "read",
+          "description": "Read a single item",
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The id of the item",
+              "type": "int64",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "create",
+          "description": "Create a new item",
+          "parameters": [
+            {
+              "name": "item",
+              "description": "The item to create",
+              "type": "object",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "update",
+          "description": "Update an existing item",
+          "parameters": [
+            {
+              "name": "item",
+              "description": "The item to update",
+              "type": "object",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "delete",
+          "description": "Delete an existing item",
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The id of the item",
+              "type": "int64",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "search",
+          "description": "Search for items",
+          "parameters": [
+            {
+              "name": "query",
+              "description": "The search query",
+              "type": "string",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "page"
+          }
+        }
+      ]
+    },
+    {
+      "name": "person",
+      "description": "Manage Persons",
+      "entity": {
+        "type": "record",
+        "model": "person",
+        "objectname": "Person",
+        "entity": {
+          "name": "person",
+          "description": "Person",
+          "baselineattributes": [
+            {
+              "name": "tenant",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": false
+            }
+          ],
+          "additionalattributes": [
+            {
+              "name": "email",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "displayname",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "firstname",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "lastname",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "uniqueid",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "nationality",
+              "type": "reference",
+              "entity": {
+                "name": "country",
+                "description": "Country",
+                "baselineattributes": [
+                  {
+                    "name": "tenant",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "description",
+                    "type": "string",
+                    "required": false
+                  }
+                ],
+                "additionalattributes": [
+                  {
+                    "name": "code",
+                    "type": "string",
+                    "required": true
+                  }
+                ]
+              },
+              "required": false
+            },
+            {
+              "name": "users",
+              "type": "array",
+              "entity": {
+                "name": "relation",
+                "description": "Relation",
+                "baselineattributes": [
+                  {
+                    "name": "tenant",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "description",
+                    "type": "string",
+                    "required": false
+                  }
+                ],
+                "additionalattributes": [
+                  {
+                    "name": "relation",
+                    "type": "reference",
+                    "entity": {
+                      "name": "company",
+                      "description": "Company",
+                      "baselineattributes": [
+                        {
+                          "name": "tenant",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "name",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "description",
+                          "type": "string",
+                          "required": false
+                        }
+                      ],
+                      "additionalattributes": [
+                        {
+                          "name": "vatnumber",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "phonenumber",
+                          "type": "string",
+                          "required": false
+                        },
+                        {
+                          "name": "address",
+                          "type": "string",
+                          "required": false
+                        },
+                        {
+                          "name": "city",
+                          "type": "string",
+                          "required": false
+                        },
+                        {
+                          "name": "postalcode",
+                          "type": "string",
+                          "required": false
+                        },
+                        {
+                          "name": "country",
+                          "type": "reference",
+                          "entity": {
+                            "name": "country",
+                            "description": "Country",
+                            "baselineattributes": [
+                              {
+                                "name": "tenant",
+                                "type": "string",
+                                "required": true
+                              },
+                              {
+                                "name": "name",
+                                "type": "string",
+                                "required": true
+                              },
+                              {
+                                "name": "description",
+                                "type": "string",
+                                "required": false
+                              }
+                            ],
+                            "additionalattributes": [
+                              {
+                                "name": "code",
+                                "type": "string",
+                                "required": true
+                              }
+                            ]
+                          },
+                          "required": false
+                        }
+                      ]
+                    },
+                    "required": false
+                  },
+                  {
+                    "name": "relationtype",
+                    "type": "string",
+                    "required": false
+                  },
+                  {
+                    "name": "groups",
+                    "type": "array",
+                    "entity": {
+                      "name": "group",
+                      "description": "Group",
+                      "baselineattributes": [
+                        {
+                          "name": "tenant",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "name",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "description",
+                          "type": "string",
+                          "required": false
+                        }
+                      ],
+                      "additionalattributes": [
+                        {
+                          "name": "hidden",
+                          "type": "boolean",
+                          "required": false
+                        },
+                        {
+                          "name": "notesid",
+                          "type": "string",
+                          "required": true
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "required": false
+            }
+          ]
+        }
+      },
+      "methods": [
+        {
+          "name": "read",
+          "description": "Read a single item",
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The id of the item",
+              "type": "int64",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "create",
+          "description": "Create a new item",
+          "parameters": [
+            {
+              "name": "item",
+              "description": "The item to create",
+              "type": "object",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "update",
+          "description": "Update an existing item",
+          "parameters": [
+            {
+              "name": "item",
+              "description": "The item to update",
+              "type": "object",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "delete",
+          "description": "Delete an existing item",
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The id of the item",
+              "type": "int64",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "search",
+          "description": "Search for items",
+          "parameters": [
+            {
+              "name": "query",
+              "description": "The search query",
+              "type": "string",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "page"
+          }
+        }
+      ]
+    },
+    {
+      "name": "relation",
+      "description": "Manage Relations",
+      "entity": {
+        "type": "record",
+        "model": "relation",
+        "objectname": "Relation",
+        "entity": {
+          "name": "relation",
+          "description": "Relation",
+          "baselineattributes": [
+            {
+              "name": "tenant",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": false
+            }
+          ],
+          "additionalattributes": [
+            {
+              "name": "relation",
+              "type": "reference",
+              "entity": {
+                "name": "company",
+                "description": "Company",
+                "baselineattributes": [
+                  {
+                    "name": "tenant",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "description",
+                    "type": "string",
+                    "required": false
+                  }
+                ],
+                "additionalattributes": [
+                  {
+                    "name": "vatnumber",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "phonenumber",
+                    "type": "string",
+                    "required": false
+                  },
+                  {
+                    "name": "address",
+                    "type": "string",
+                    "required": false
+                  },
+                  {
+                    "name": "city",
+                    "type": "string",
+                    "required": false
+                  },
+                  {
+                    "name": "postalcode",
+                    "type": "string",
+                    "required": false
+                  },
+                  {
+                    "name": "country",
+                    "type": "reference",
+                    "entity": {
+                      "name": "country",
+                      "description": "Country",
+                      "baselineattributes": [
+                        {
+                          "name": "tenant",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "name",
+                          "type": "string",
+                          "required": true
+                        },
+                        {
+                          "name": "description",
+                          "type": "string",
+                          "required": false
+                        }
+                      ],
+                      "additionalattributes": [
+                        {
+                          "name": "code",
+                          "type": "string",
+                          "required": true
+                        }
+                      ]
+                    },
+                    "required": false
+                  }
+                ]
+              },
+              "required": false
+            },
+            {
+              "name": "relationtype",
+              "type": "string",
+              "required": false
+            },
+            {
+              "name": "groups",
+              "type": "array",
+              "entity": {
+                "name": "group",
+                "description": "Group",
+                "baselineattributes": [
+                  {
+                    "name": "tenant",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "name",
+                    "type": "string",
+                    "required": true
+                  },
+                  {
+                    "name": "description",
+                    "type": "string",
+                    "required": false
+                  }
+                ],
+                "additionalattributes": [
+                  {
+                    "name": "hidden",
+                    "type": "boolean",
+                    "required": false
+                  },
+                  {
+                    "name": "notesid",
+                    "type": "string",
+                    "required": true
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "methods": [
+        {
+          "name": "read",
+          "description": "Read a single item",
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The id of the item",
+              "type": "int64",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "create",
+          "description": "Create a new item",
+          "parameters": [
+            {
+              "name": "item",
+              "description": "The item to create",
+              "type": "object",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "update",
+          "description": "Update an existing item",
+          "parameters": [
+            {
+              "name": "item",
+              "description": "The item to update",
+              "type": "object",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "object"
+          }
+        },
+        {
+          "name": "delete",
+          "description": "Delete an existing item",
+          "parameters": [
+            {
+              "name": "id",
+              "description": "The id of the item",
+              "type": "int64",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "void"
+          }
+        },
+        {
+          "name": "search",
+          "description": "Search for items",
+          "parameters": [
+            {
+              "name": "query",
+              "description": "The search query",
+              "type": "string",
+              "required": true
+            }
+          ],
+          "returns": {
+            "type": "page"
+          }
+        }
+      ]
+    },
+    {
+      "name": "system",
+      "description": "Manage Systems",
+      "entity": {
+        "type": "record",
+        "model": "system",
+        "objectname": "System",
+        "entity": {
+          "name": "system",
+          "description": "System",
+          "baselineattributes": [
+            {
+              "name": "tenant",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "name",
+              "type": "string",
+              "required": true
+            },
+            {
+              "name": "description",
+              "type": "string",
+              "required": false
+            }
+          ],
+          "additionalattributes": [
+            {
+              "name": "version",
               "type": "string",
               "required": true
             }

@@ -15,4 +15,9 @@ import (
 func RegisterServiceEndpoints(root micro.Group) {
     root.AddEndpoint("user", micro.HandlerFunc(services.HandleUserRequests))
         root.AddEndpoint("group", micro.HandlerFunc(services.HandleGroupRequests))
+        root.AddEndpoint("country", micro.HandlerFunc(services.HandleCountryRequests))
+        root.AddEndpoint("company", micro.HandlerFunc(services.HandleCompanyRequests))
+        root.AddEndpoint("person", micro.HandlerFunc(services.HandlePersonRequests))
+        root.AddEndpoint("relation", micro.HandlerFunc(services.HandleRelationRequests))
+        root.AddEndpoint("system", micro.HandlerFunc(services.HandleSystemRequests))
     }

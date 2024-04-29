@@ -105,18 +105,22 @@ entities:
     additionalattributes:
       - name: email
         type: string
-        required: true
+        required: false
+      - name: displayname
+        type: string
+        required: false
       - name: firstname
         type: string
         required: true
       - name: lastname
         type: string
         required: true
-      - name: phonenumber
+      - name: uniqueid
         type: string
-        required: false
-      - name: governmentid
-        type: string
+        required: true
+      - name: nationality
+        type: reference
+        entity: *country
         required: false
       - name: users
         type: array
@@ -191,4 +195,49 @@ services:
       model: group
       objectname: Group
       entity: *group
+    methods: *itemMethods
+
+  - name: country
+    description: Manage Countries
+    entity:
+      type: record
+      model: country
+      objectname: Country
+      entity: *country
+    methods: *itemMethods
+
+  - name: company
+    description: Manage Companies
+    entity:
+      type: record
+      model: company
+      objectname: Company
+      entity: *company
+    methods: *itemMethods
+
+  - name: person
+    description: Manage Persons
+    entity:
+      type: record
+      model: person
+      objectname: Person
+      entity: *person
+    methods: *itemMethods
+
+  - name: relation
+    description: Manage Relations
+    entity:
+      type: record
+      model: relation
+      objectname: Relation
+      entity: *relation
+    methods: *itemMethods
+
+  - name: system
+    description: Manage Systems
+    entity:
+      type: record
+      model: system
+      objectname: System
+      entity: *system
     methods: *itemMethods

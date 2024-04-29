@@ -18,10 +18,8 @@ export interface AppMap {
     services: Service[]
 }
 export const pagemap : AppMap = {
-  "name": "people",
   "services": [
     {
-      "name": "user",
       "endpoints": [
         {
           "name": "read"
@@ -38,10 +36,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ]
+      ],
+      "name": "user"
     },
     {
-      "name": "group",
       "endpoints": [
         {
           "name": "read"
@@ -58,8 +56,110 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ]
+      ],
+      "name": "group"
+    },
+    {
+      "endpoints": [
+        {
+          "name": "read"
+        },
+        {
+          "name": "create"
+        },
+        {
+          "name": "update"
+        },
+        {
+          "name": "delete"
+        },
+        {
+          "name": "search"
+        }
+      ],
+      "name": "country"
+    },
+    {
+      "endpoints": [
+        {
+          "name": "read"
+        },
+        {
+          "name": "create"
+        },
+        {
+          "name": "update"
+        },
+        {
+          "name": "delete"
+        },
+        {
+          "name": "search"
+        }
+      ],
+      "name": "company"
+    },
+    {
+      "endpoints": [
+        {
+          "name": "read"
+        },
+        {
+          "name": "create"
+        },
+        {
+          "name": "update"
+        },
+        {
+          "name": "delete"
+        },
+        {
+          "name": "search"
+        }
+      ],
+      "name": "person"
+    },
+    {
+      "endpoints": [
+        {
+          "name": "read"
+        },
+        {
+          "name": "create"
+        },
+        {
+          "name": "update"
+        },
+        {
+          "name": "delete"
+        },
+        {
+          "name": "search"
+        }
+      ],
+      "name": "relation"
+    },
+    {
+      "endpoints": [
+        {
+          "name": "read"
+        },
+        {
+          "name": "create"
+        },
+        {
+          "name": "update"
+        },
+        {
+          "name": "delete"
+        },
+        {
+          "name": "search"
+        }
+      ],
+      "name": "system"
     }
-  ]
+  ],
+  "name": "people"
 }
 
