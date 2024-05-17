@@ -9,19 +9,17 @@ keep: false
 */ 
 /* guldbar */
 import SearchGroup from "@/app/magic/services/magic-people/group/components/search";
+/*
 import CreateGroup from "@/app/magic/services/magic-people/group/components/create";
 import ReadGroup from "@/app/magic/services/magic-people/group/components/read";
 import UpdateGroup from "@/app/magic/services/magic-people/group/components/update";
 import DeleteGroup from "@/app/magic/services/magic-people/group/components/delete";
-
+*/
 export default function Group() {
 return (
 <div>
 Search:<SearchGroup />
-Create: <CreateGroup />
-Read: <ReadGroup />
-Update: <UpdateGroup />
-Delete: <DeleteGroup />
+
 </div>
 );
 }

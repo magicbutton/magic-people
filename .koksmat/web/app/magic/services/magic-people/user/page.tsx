@@ -9,19 +9,17 @@ keep: false
 */ 
 /* guldbar */
 import SearchUser from "@/app/magic/services/magic-people/user/components/search";
+/*
 import CreateUser from "@/app/magic/services/magic-people/user/components/create";
 import ReadUser from "@/app/magic/services/magic-people/user/components/read";
 import UpdateUser from "@/app/magic/services/magic-people/user/components/update";
 import DeleteUser from "@/app/magic/services/magic-people/user/components/delete";
-
+*/
 export default function User() {
 return (
 <div>
 Search:<SearchUser />
-Create: <CreateUser />
-Read: <ReadUser />
-Update: <UpdateUser />
-Delete: <DeleteUser />
+
 </div>
 );
 }

@@ -8,6 +8,7 @@ import {
   CreditCard,
   File,
   Home,
+  Map,
   LineChart,
   ListFilter,
   MessageCircleQuestion,
@@ -92,7 +93,7 @@ export default function AppLeftRail(props: {}) {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                href="/apps"
+                href="/people"
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
                 <Home className="h-5 w-5" />
@@ -104,14 +105,26 @@ export default function AppLeftRail(props: {}) {
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
-                href="/apps/survey"
+                href="/people/companies"
                 className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
               >
-                <MessageCircleQuestion className="h-5 w-5" />
-                <span className="sr-only">Surveys</span>
+                <Package className="h-5 w-5" />
+                <span className="sr-only">Companies</span>
               </Link>
             </TooltipTrigger>
-            <TooltipContent side="right">Surveys</TooltipContent>
+            <TooltipContent side="right">Companies</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href="/people/countries"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+              >
+                <Map className="h-5 w-5" />
+                <span className="sr-only">Countries</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">Countries</TooltipContent>
           </Tooltip>
           {/* <Tooltip>
             <TooltipTrigger asChild>

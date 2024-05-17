@@ -1,10 +1,8 @@
-"use client";
-
 import SearchPerson from "@/app/magic/services/magic-people/person/components/search";
 
-export default function Page() {
+export default function Person() {
   return (
-    <div className="space-x-2 h-[90vh]">
+    <div>
       <SearchPerson />
     </div>
   );

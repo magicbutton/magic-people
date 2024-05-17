@@ -9,19 +9,17 @@ keep: false
 */ 
 /* guldbar */
 import SearchRelation from "@/app/magic/services/magic-people/relation/components/search";
+/*
 import CreateRelation from "@/app/magic/services/magic-people/relation/components/create";
 import ReadRelation from "@/app/magic/services/magic-people/relation/components/read";
 import UpdateRelation from "@/app/magic/services/magic-people/relation/components/update";
 import DeleteRelation from "@/app/magic/services/magic-people/relation/components/delete";
-
+*/
 export default function Relation() {
 return (
 <div>
 Search:<SearchRelation />
-Create: <CreateRelation />
-Read: <ReadRelation />
-Update: <UpdateRelation />
-Delete: <DeleteRelation />
+
 </div>
 );
 }
