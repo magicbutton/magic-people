@@ -1,6 +1,8 @@
 package applogic
 
 import (
+	"fmt"
+
 	"github.com/magicbutton/magic-people/database/dbhelpers"
 	"github.com/magicbutton/magic-people/utils"
 )
@@ -26,12 +28,40 @@ import (
 */
 
 type Identifiable struct {
-	ID int64
+	ID int
 }
 
 func Search[DB interface{}, DOC interface{}](fieldname string, query string, mapper func(DB) DOC) (*utils.Page[DOC], error) {
 
-	result, err := dbhelpers.SelectWhereILike[DB](fieldname, query)
+	result, err := dbhelpers.SelectWhere[DB](fmt.Sprintf("%s ILIKE ?", fieldname), query)
+
+	if err != nil {
+		return nil, err
+	}
+	items := []DOC{}
+	pageSize := 500
+
+	for index, item := range result {
+		if index >= pageSize {
+			break
+		}
+		mappedItem := mapper(item)
+		items = append(items, mappedItem)
+	}
+
+	page := utils.Page[DOC]{
+		Items:       items,
+		TotalPages:  (len(items) / pageSize) + 1,
+		TotalItems:  len(items),
+		CurrentPage: 0,
+	}
+
+	return &page, nil
+}
+
+func Select[DB interface{}, DOC interface{}](query string, mapper func(DB) DOC, args ...interface{}) (*[]DOC, error) {
+
+	result, err := dbhelpers.SelectWhere[DB](query, args...)
 
 	if err != nil {
 		return nil, err
@@ -42,15 +72,25 @@ func Search[DB interface{}, DOC interface{}](fieldname string, query string, map
 		items = append(items, mappedItem)
 	}
 
-	page := utils.Page[DOC]{
-		Items:       items,
-		TotalPages:  1,
-		TotalItems:  len(items),
-		CurrentPage: 0,
+	return &items, nil
+}
+
+func SelectDistinct[DB interface{}, DOC interface{}](query string, mapper func(DB) DOC, columns []string, args ...interface{}) (*[]DOC, error) {
+
+	result, err := dbhelpers.SelectDistinct[DB](query, columns, args...)
+
+	if err != nil {
+		return nil, err
+	}
+	items := []DOC{}
+	for _, item := range result {
+		mappedItem := mapper(item)
+		items = append(items, mappedItem)
 	}
 
-	return &page, nil
+	return &items, nil
 }
+
 func Create[DB interface{}, DOC interface{}](item DOC, mapperIncoming func(DOC) DB, mapperOutgoing func(DB) DOC) (*DOC, error) {
 
 	dbItem := mapperIncoming(item)
@@ -62,7 +102,8 @@ func Create[DB interface{}, DOC interface{}](item DOC, mapperIncoming func(DOC) 
 	return &createdItem, nil
 
 }
-func Read[DB interface{}, DOC interface{}](id int64, mapper func(DB) DOC) (*DOC, error) {
+
+func Read[DB interface{}, DOC interface{}](id int, mapper func(DB) DOC) (*DOC, error) {
 	dbItem, err := dbhelpers.SelectById[DB](id)
 	if err != nil {
 		return nil, err
@@ -72,7 +113,7 @@ func Read[DB interface{}, DOC interface{}](id int64, mapper func(DB) DOC) (*DOC,
 
 }
 
-func Update[DB interface{}, DOC interface{}](id int64, item DOC, mapperIncoming func(DOC) DB, mapperOutgoing func(DB) DOC) (*DOC, error) {
+func Update[DB interface{}, DOC interface{}](id int, item DOC, mapperIncoming func(DOC) DB, mapperOutgoing func(DB) DOC) (*DOC, error) {
 
 	dbItem := mapperIncoming(item)
 	err := dbhelpers.Update[DB](dbItem)
@@ -85,7 +126,7 @@ func Update[DB interface{}, DOC interface{}](id int64, item DOC, mapperIncoming 
 
 }
 
-func Delete[DB interface{}, DOC interface{}](id int64) error {
+func Delete[DB interface{}, DOC interface{}](id int) error {
 	err := dbhelpers.DeleteById[DB](id)
 	if err != nil {
 		return err

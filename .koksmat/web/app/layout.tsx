@@ -6,6 +6,7 @@ import { MSALWrapper } from "@/koksmat/msal/auth";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { ThemeProvider } from "@/components/theme-provider";
 import Script from "next/script";
+import { ServiceInspector } from "@/components/service-inspector";
 
 export default function RootLayout2({
   children,
@@ -34,6 +35,7 @@ export default function RootLayout2({
             <MSALWrapper>
               {children}
               <TailwindIndicator />
+              <ServiceInspector />
             </MSALWrapper>
           </MagicboxProvider>
         </ThemeProvider>

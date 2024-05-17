@@ -35,7 +35,45 @@ func SelectWhereILike[T interface{}](name string, search string) ([]T, error) {
 
 }
 
-func SelectById[T interface{}](id int64) (*T, error) {
+func SelectWhere[T interface{}](query string, args ...interface{}) ([]T, error) {
+
+	ctx := context.Background()
+	items := []T{}
+
+	//	Db.NewCreateTable().Model(user).Exec(ctx)
+	rows, err := utils.Db.NewSelect().Model((*T)(nil)).Where(query, args...).Rows(ctx)
+	if err != nil {
+		return nil, err
+	}
+	err = utils.Db.ScanRows(ctx, rows, &items)
+	if err != nil {
+		return nil, err
+	}
+
+	return items, nil
+
+}
+
+func SelectDistinct[T interface{}](query string, columns []string, args ...interface{}) ([]T, error) {
+
+	ctx := context.Background()
+	items := []T{}
+
+	//	Db.NewCreateTable().Model(user).Exec(ctx)
+	rows, err := utils.Db.NewSelect().Model((*T)(nil)).Column(columns...).Distinct().Where(query, args...).Rows(ctx)
+	if err != nil {
+		return nil, err
+	}
+	err = utils.Db.ScanRows(ctx, rows, &items)
+	if err != nil {
+		return nil, err
+	}
+
+	return items, nil
+
+}
+
+func SelectById[T interface{}](id int) (*T, error) {
 
 	ctx := context.Background()
 
@@ -50,7 +88,7 @@ func SelectById[T interface{}](id int64) (*T, error) {
 
 }
 
-func DeleteById[T interface{}](id int64) error {
+func DeleteById[T interface{}](id int) error {
 
 	ctx := context.Background()
 
@@ -64,6 +102,7 @@ func DeleteById[T interface{}](id int64) error {
 	return nil
 
 }
+
 func Update[T interface{}](data T) error {
 
 	ctx := context.Background()

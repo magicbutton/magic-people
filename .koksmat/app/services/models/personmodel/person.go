@@ -10,7 +10,7 @@ package personmodel
 import (
 	"encoding/json"
 	"time"
-    "github.com/magicbutton/magic-people/database/databasetypes"
+    // "github.com/magicbutton/magic-people/database/databasetypes"
 )
 
 func UnmarshalPerson(data []byte) (Person, error) {
@@ -35,7 +35,7 @@ type Person struct {
     Firstname string `json:"firstname"`
     Lastname string `json:"lastname"`
     Uniqueid string `json:"uniqueid"`
-    Nationality databasetypes.Reference `json:"nationality"`
+    Nationality_id int `json:"nationality_id"`
 
 }
 

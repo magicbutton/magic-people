@@ -2,7 +2,7 @@ package utils
 
 import "strconv"
 
-func StrToInt(s string) int64 {
-	i, _ := strconv.ParseInt(s, 0, 64)
+func StrToInt(s string) int {
+	i, _ := strconv.Atoi(s)
 	return i
 }

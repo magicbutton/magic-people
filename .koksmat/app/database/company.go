@@ -5,13 +5,12 @@ set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
 keep: false
 ---
 */   
-//version: pølsevogn1
+//version: pølsevogn2
 package database
 
 import (
 	"time"
-            "github.com/magicbutton/magic-people/database/databasetypes"
-
+    
 	"github.com/uptrace/bun"
 )
 
@@ -22,15 +21,15 @@ type Company struct {
 	CreatedAt      time.Time `bun:",nullzero,notnull,default:current_timestamp"`
 	UpdatedAt      time.Time `bun:",nullzero,notnull,default:current_timestamp"`
 	DeletedAt      time.Time `bun:",soft_delete,nullzero"`
-        Tenant string `json:"tenant"`
-    Name string `json:"name"`
-    Description string `json:"description"`
-    Vatnumber string `json:"vatnumber"`
-    Phonenumber string `json:"phonenumber"`
-    Address string `json:"address"`
-    City string `json:"city"`
-    Postalcode string `json:"postalcode"`
-    Country databasetypes.Reference `json:"country"`
+        Tenant string `bun:"tenant"`
+    Name string `bun:"name"`
+    Description string `bun:"description"`
+    Vatnumber string `bun:"vatnumber"`
+    Phonenumber string `bun:"phonenumber"`
+    Address string `bun:"address"`
+    City string `bun:"city"`
+    Postalcode string `bun:"postalcode"`
+    Country_id int `bun:"country_id"`
 
 }
 

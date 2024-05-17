@@ -10,7 +10,7 @@ package companymodel
 import (
 	"encoding/json"
 	"time"
-    "github.com/magicbutton/magic-people/database/databasetypes"
+    // "github.com/magicbutton/magic-people/database/databasetypes"
 )
 
 func UnmarshalCompany(data []byte) (Company, error) {
@@ -35,7 +35,7 @@ type Company struct {
     Address string `json:"address"`
     City string `json:"city"`
     Postalcode string `json:"postalcode"`
-    Country databasetypes.Reference `json:"country"`
+    Country_id int `json:"country_id"`
 
 }
 

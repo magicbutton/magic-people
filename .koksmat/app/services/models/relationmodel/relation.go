@@ -10,7 +10,7 @@ package relationmodel
 import (
 	"encoding/json"
 	"time"
-    "github.com/magicbutton/magic-people/database/databasetypes"
+    // "github.com/magicbutton/magic-people/database/databasetypes"
 )
 
 func UnmarshalRelation(data []byte) (Relation, error) {
@@ -30,7 +30,7 @@ type Relation struct {
         Tenant string `json:"tenant"`
     Name string `json:"name"`
     Description string `json:"description"`
-    Relation databasetypes.Reference `json:"relation"`
+    Relation_id int `json:"relation_id"`
     Relationtype string `json:"relationtype"`
 
 }

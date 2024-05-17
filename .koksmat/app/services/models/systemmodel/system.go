@@ -10,7 +10,7 @@ package systemmodel
 import (
 	"encoding/json"
 	"time"
-    
+    // 
 )
 
 func UnmarshalSystem(data []byte) (System, error) {

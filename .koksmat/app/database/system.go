@@ -5,7 +5,7 @@ set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
 keep: false
 ---
 */   
-//version: pølsevogn1
+//version: pølsevogn2
 package database
 
 import (
@@ -21,10 +21,10 @@ type System struct {
 	CreatedAt      time.Time `bun:",nullzero,notnull,default:current_timestamp"`
 	UpdatedAt      time.Time `bun:",nullzero,notnull,default:current_timestamp"`
 	DeletedAt      time.Time `bun:",soft_delete,nullzero"`
-        Tenant string `json:"tenant"`
-    Name string `json:"name"`
-    Description string `json:"description"`
-    Version string `json:"version"`
+        Tenant string `bun:"tenant"`
+    Name string `bun:"name"`
+    Description string `bun:"description"`
+    Version string `bun:"version"`
 
 }
 

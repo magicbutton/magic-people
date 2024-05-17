@@ -1,29 +1,26 @@
-/* 
+/*
 File have been automatically created. To prevent the file from getting overwritten
-set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
+set the Front Matter property ´´keep´´ to ´´true´´ syntax for the code snippet
 ---
 keep: false
 ---
 */
-//generator:  noma3
+//generator:  noma3.read.v2
 package user
-// noma2    
+
 import (
-	"log"
-    "errors"
+    "log"
+    "strconv"
+    "github.com/magicbutton/magic-people/applogic"
+    "github.com/magicbutton/magic-people/database"
     "github.com/magicbutton/magic-people/services/models/usermodel"
-    )
 
+)
 
-func UserRead(id int64 ) (*usermodel.User,error) {
-log.Println("Calling UserRead")
-    
-    
-    
-    return nil,errors.New("Not implemented")
+func UserRead(arg0 string) (*usermodel.User, error) {
+    id,_ := strconv.Atoi(arg0)
+    log.Println("Calling Userread")
 
-
-
+    return applogic.Read[database.User, usermodel.User](id, applogic.MapUserOutgoing)
 
 }
-    

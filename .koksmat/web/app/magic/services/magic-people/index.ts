@@ -20,6 +20,7 @@ export interface AppMap {
 export const pagemap : AppMap = {
   "services": [
     {
+      "name": "user",
       "endpoints": [
         {
           "name": "read"
@@ -36,10 +37,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "user"
+      ]
     },
     {
+      "name": "group",
       "endpoints": [
         {
           "name": "read"
@@ -56,10 +57,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "group"
+      ]
     },
     {
+      "name": "country",
       "endpoints": [
         {
           "name": "read"
@@ -76,10 +77,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "country"
+      ]
     },
     {
+      "name": "company",
       "endpoints": [
         {
           "name": "read"
@@ -96,10 +97,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "company"
+      ]
     },
     {
+      "name": "person",
       "endpoints": [
         {
           "name": "read"
@@ -116,10 +117,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "person"
+      ]
     },
     {
+      "name": "relation",
       "endpoints": [
         {
           "name": "read"
@@ -136,10 +137,10 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "relation"
+      ]
     },
     {
+      "name": "system",
       "endpoints": [
         {
           "name": "read"
@@ -156,8 +157,7 @@ export const pagemap : AppMap = {
         {
           "name": "search"
         }
-      ],
-      "name": "system"
+      ]
     }
   ],
   "name": "people"

@@ -10,7 +10,7 @@ package countrymodel
 import (
 	"encoding/json"
 	"time"
-    
+    // 
 )
 
 func UnmarshalCountry(data []byte) (Country, error) {

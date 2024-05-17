@@ -10,7 +10,7 @@ package usermodel
 import (
 	"encoding/json"
 	"time"
-    "github.com/magicbutton/magic-people/database/databasetypes"
+    // "github.com/magicbutton/magic-people/database/databasetypes"
 )
 
 func UnmarshalUser(data []byte) (User, error) {
@@ -30,7 +30,7 @@ type User struct {
         Tenant string `json:"tenant"`
     Name string `json:"name"`
     Description string `json:"description"`
-    System databasetypes.Reference `json:"system"`
+    System_id int `json:"system_id"`
     Fullname string `json:"fullname"`
 
 }

@@ -5,7 +5,7 @@ set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
 keep: false
 ---
 */   
-//version: pølsevogn1
+//version: pølsevogn2
 package database
 
 import (
@@ -21,11 +21,11 @@ type Group struct {
 	CreatedAt      time.Time `bun:",nullzero,notnull,default:current_timestamp"`
 	UpdatedAt      time.Time `bun:",nullzero,notnull,default:current_timestamp"`
 	DeletedAt      time.Time `bun:",soft_delete,nullzero"`
-        Tenant string `json:"tenant"`
-    Name string `json:"name"`
-    Description string `json:"description"`
-    Hidden bool `json:"hidden"`
-    Notesid string `json:"notesid"`
+        Tenant string `bun:"tenant"`
+    Name string `bun:"name"`
+    Description string `bun:"description"`
+    Hidden bool `bun:"hidden"`
+    Notesid string `bun:"notesid"`
 
 }
 

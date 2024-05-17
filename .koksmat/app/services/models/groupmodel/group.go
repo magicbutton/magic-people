@@ -10,7 +10,7 @@ package groupmodel
 import (
 	"encoding/json"
 	"time"
-    
+    // 
 )
 
 func UnmarshalGroup(data []byte) (Group, error) {
