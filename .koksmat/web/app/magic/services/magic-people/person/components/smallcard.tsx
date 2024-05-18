@@ -25,7 +25,10 @@ import {
     SheetTitle,
     SheetTrigger,
   } from "@/components/ui/sheet";
+  import { Button } from "@/components/ui/button";
+
   import ReadPerson from "./read";
+  import UpdatePerson from "./update";
 
   export default function PersonSmallCard(props: {
     id: number;
@@ -33,29 +36,44 @@ import {
     description: string;
   }) {
     const { name, description ,id} = props;
-    const [isSelected, setisSelected] = useState(false);
+   
+    const [isEditing, setisEditing] = useState(false);
+    const [isViewing, setisViewing] = useState(false);
+
 
     return (
         <div>
-      <Card className="m-2 hover:shadow-lg cursor-pointer"  onClick={() => setisSelected(true)}>
+      <Card className="m-2 hover:shadow-lg cursor-pointer"  >
         <CardHeader>
           <CardTitle>{name}</CardTitle>
           <CardDescription>{description}</CardDescription>
         </CardHeader>
         <CardContent></CardContent>
-        <CardFooter></CardFooter>
+        <CardFooter>
+        <Button variant="link" onClick={()=>setisViewing(true)}>View</Button>
+        <Button variant="link" onClick={()=>setisEditing(true)}>Edit</Button> </CardFooter>
       </Card>
-      <Sheet open={isSelected} onOpenChange={setisSelected}>
+      <Sheet open={isViewing} onOpenChange={setisViewing}>
       <SheetContent>
         <SheetHeader>
           <SheetTitle>{name}</SheetTitle>
           <SheetDescription>
-            {isSelected && (id>0) && <ReadPerson id={id} />}
+            {isViewing && (id>0) && <ReadPerson id={id} />}
           </SheetDescription>
         </SheetHeader>
       </SheetContent>
     </Sheet>
-    </div>
+    <Sheet open={isEditing} onOpenChange={setisEditing}>
+    <SheetContent>
+      <SheetHeader>
+        <SheetTitle>{name}</SheetTitle>
+        <SheetDescription>
+          {isEditing && (id>0) && <UpdatePerson id={id} />}
+        </SheetDescription>
+      </SheetHeader>
+    </SheetContent>
+  </Sheet>
+  </div>
     );
   }
   

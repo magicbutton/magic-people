@@ -16,6 +16,7 @@ import {
   Package,
   Package2,
   PanelLeft,
+  Pyramid,
   Search,
   Settings,
   ShoppingCart,
@@ -90,6 +91,7 @@ export default function AppLeftRail(props: {}) {
             <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
             <span className="sr-only">Acme Inc</span>
           </Link> */}
+
           <Tooltip>
             <TooltipTrigger asChild>
               <Link
@@ -101,6 +103,18 @@ export default function AppLeftRail(props: {}) {
               </Link>
             </TooltipTrigger>
             <TooltipContent side="right">Dashboard</TooltipContent>
+          </Tooltip>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                href="/people/organisation"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+              >
+                <Pyramid className="h-5 w-5" />
+                <span className="sr-only">Organisation</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">Organisation</TooltipContent>
           </Tooltip>
           <Tooltip>
             <TooltipTrigger asChild>

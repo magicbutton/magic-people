@@ -8,6 +8,8 @@ import { set } from "date-fns";
 import { tr } from "date-fns/locale";
 import { useMemo, useState } from "react";
 import PersonSmallCard from "./smallcard";
+import {PersonItem} from "../applogic/model";
+
   
     /* 
 File have been automatically created. To prevent the file from getting overwritten
@@ -24,26 +26,9 @@ keep: false
         totalPages: number
         totalItems: number
         currentPage: number
-        items: Item[]
+        items: PersonItem[]
       }
-      
-// Person
-export interface Item  {
-    id: number;
-    created_at: string;
-    updated_at: string;
-        tenant : string ;
-    name : string ;
-    description : string ;
-    email : string ;
-    displayname : string ;
-    firstname : string ;
-    lastname : string ;
-    uniqueid : string ;
-    nationality_id : number ;
-
-}
-
+   
 
     export default function SearchPerson() {
         const [transactionId, settransactionId] = useState(0);

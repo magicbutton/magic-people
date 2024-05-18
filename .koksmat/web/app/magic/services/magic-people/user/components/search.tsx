@@ -8,6 +8,8 @@ import { set } from "date-fns";
 import { tr } from "date-fns/locale";
 import { useMemo, useState } from "react";
 import UserSmallCard from "./smallcard";
+import {UserItem} from "../applogic/model";
+
   
     /* 
 File have been automatically created. To prevent the file from getting overwritten
@@ -24,22 +26,9 @@ keep: false
         totalPages: number
         totalItems: number
         currentPage: number
-        items: Item[]
+        items: UserItem[]
       }
-      
-// User
-export interface Item  {
-    id: number;
-    created_at: string;
-    updated_at: string;
-        tenant : string ;
-    name : string ;
-    description : string ;
-    system_id : number ;
-    fullname : string ;
-
-}
-
+   
 
     export default function SearchUser() {
         const [transactionId, settransactionId] = useState(0);

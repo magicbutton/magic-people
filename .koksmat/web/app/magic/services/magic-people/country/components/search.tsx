@@ -8,6 +8,8 @@ import { set } from "date-fns";
 import { tr } from "date-fns/locale";
 import { useMemo, useState } from "react";
 import CountrySmallCard from "./smallcard";
+import {CountryItem} from "../applogic/model";
+
   
     /* 
 File have been automatically created. To prevent the file from getting overwritten
@@ -24,21 +26,9 @@ keep: false
         totalPages: number
         totalItems: number
         currentPage: number
-        items: Item[]
+        items: CountryItem[]
       }
-      
-// Country
-export interface Item  {
-    id: number;
-    created_at: string;
-    updated_at: string;
-        tenant : string ;
-    name : string ;
-    description : string ;
-    code : string ;
-
-}
-
+   
 
     export default function SearchCountry() {
         const [transactionId, settransactionId] = useState(0);

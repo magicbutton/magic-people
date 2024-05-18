@@ -1,29 +1,64 @@
-
-"use client";
-import { useService } from "@/koksmat/useservice";
-import { useState } from "react";
-/* 
+    /* 
 File have been automatically created. To prevent the file from getting overwritten
 set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
 ---
 keep: false
 ---
 */ 
-/* guldbar */
+"use client";
+import { useService } from "@/koksmat/useservice";
+import { useState } from "react";
+import {CountryItem} from "../applogic/model";
+
+
+/* yankiebar */
 
 export default function ReadCountry(props: { id: number }) {
     const { id } = props;
     const [transactionId, settransactionId] = useState(0);
-    const readResult = useService<any>(
+    const readResult = useService<CountryItem>(
       "magic-people.country",
       ["read", id?.toString()],
       "",
       6000,
       transactionId.toString()
     );
+    const country = readResult.data;
     return (
       <div>
-        <pre>{JSON.stringify(readResult, null, 2)}</pre>
+          
+    {country && <div>
+        <div>
+        <div className="font-bold" >Tenant</div>
+        <div>{country.tenant}</div>
+    </div>    <div>
+        <div className="font-bold" >Name</div>
+        <div>{country.name}</div>
+    </div>    <div>
+        <div className="font-bold" >Description</div>
+        <div>{country.description}</div>
+    </div>    <div>
+        <div className="font-bold" >code</div>
+        <div>{country.code}</div>
+    </div>
+    <div>
+        <div>
+        <div className="font-bold" >id</div>
+        <div>{country.number}</div>
+    </div>
+        <div>
+        <div className="font-bold" >created_at</div>
+        <div>{country.number}</div>
+    </div>
+        <div>
+        <div className="font-bold" >updated_at</div>
+        <div>{country.number}</div>
+    </div>
+    </div>
+    </div>}
+
+
+     
       </div>
     );
   }

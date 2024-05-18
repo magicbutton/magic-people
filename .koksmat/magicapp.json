@@ -4,20 +4,45 @@
   "organisation": "magicbutton",
   "magicappversion": "v0.0.1",
   "description": "A simple app to manage users, groups and memberships",
+  "react": {
+    "components": {
+      "viewitem": {
+        "name": "viewitem",
+        "markup": "export function ViewItem<T>(props: {caption:string, value:T}) {\nconst {caption, value} = props;\nreturn (\n<div>\n  <div className=\"font-bold\">{caption}</h1>\n  <div >{value}</h1>\n</div>\n)\n}\n"
+      },
+      "formitem": {
+        "name": "formitem",
+        "markup": "export function EditItem<T>(props: { caption:string, FormField : FormFieldType<T>, value:T, onChange: (value:T) => void}) {\nconst {caption, value,ForField} = props;\nreturn (\n<div>\n  <div className=\"font-bold\">{caption}</h1>\n  <div ><FormField<T> onChange={onChange} value={value} /></h1>\n</div>\n)\n}\n"
+      }
+    }
+  },
+  "defaults": {
+    "viewitem": {
+      "name": "viewitem",
+      "markup": "export function ViewItem<T>(props: {caption:string, value:T}) {\nconst {caption, value} = props;\nreturn (\n<div>\n  <div className=\"font-bold\">{caption}</h1>\n  <div >{value}</h1>\n</div>\n)\n}\n"
+    },
+    "edititem": {
+      "name": "formitem",
+      "markup": "export function EditItem<T>(props: { caption:string, FormField : FormFieldType<T>, value:T, onChange: (value:T) => void}) {\nconst {caption, value,ForField} = props;\nreturn (\n<div>\n  <div className=\"font-bold\">{caption}</h1>\n  <div ><FormField<T> onChange={onChange} value={value} /></h1>\n</div>\n)\n}\n"
+    }
+  },
   "baseattributes": {
     "record": [
       {
         "name": "tenant",
         "type": "string",
+        "displayname": "Tenant",
         "required": true
       },
       {
         "name": "name",
         "type": "string",
+        "displayname": "Name",
         "required": true
       },
       {
         "name": "description",
+        "displayname": "Description",
         "type": "string",
         "required": false
       }
@@ -31,15 +56,18 @@
         {
           "name": "tenant",
           "type": "string",
+          "displayname": "Tenant",
           "required": true
         },
         {
           "name": "name",
           "type": "string",
+          "displayname": "Name",
           "required": true
         },
         {
           "name": "description",
+          "displayname": "Description",
           "type": "string",
           "required": false
         }
@@ -47,11 +75,13 @@
       "additionalattributes": [
         {
           "name": "hidden",
+          "displayname": "Hidden",
           "type": "boolean",
           "required": false
         },
         {
           "name": "notesid",
+          "displayname": "NotesId",
           "type": "string",
           "required": true
         }
@@ -59,20 +89,24 @@
     },
     "country": {
       "name": "country",
+      "displayname": "Country",
       "description": "Country",
       "baselineattributes": [
         {
           "name": "tenant",
           "type": "string",
+          "displayname": "Tenant",
           "required": true
         },
         {
           "name": "name",
           "type": "string",
+          "displayname": "Name",
           "required": true
         },
         {
           "name": "description",
+          "displayname": "Description",
           "type": "string",
           "required": false
         }
@@ -87,20 +121,24 @@
     },
     "company": {
       "name": "company",
+      "displayname": "Company",
       "description": "Company",
       "baselineattributes": [
         {
           "name": "tenant",
           "type": "string",
+          "displayname": "Tenant",
           "required": true
         },
         {
           "name": "name",
           "type": "string",
+          "displayname": "Name",
           "required": true
         },
         {
           "name": "description",
+          "displayname": "Description",
           "type": "string",
           "required": false
         }
@@ -108,48 +146,58 @@
       "additionalattributes": [
         {
           "name": "vatnumber",
+          "displayname": "Vat Number",
           "type": "string",
           "required": true
         },
         {
           "name": "phonenumber",
+          "displayname": "Phone Number",
           "type": "string",
           "required": false
         },
         {
           "name": "address",
+          "displayname": "Address",
           "type": "string",
           "required": false
         },
         {
           "name": "city",
+          "displayname": "City",
           "type": "string",
           "required": false
         },
         {
           "name": "postalcode",
+          "displayname": "Postal Code",
           "type": "string",
           "required": false
         },
         {
           "name": "country",
+          "displayname": "Country",
           "type": "reference",
           "entity": {
             "name": "country",
+            "displayname": "Country",
             "description": "Country",
             "baselineattributes": [
               {
                 "name": "tenant",
                 "type": "string",
+                "displayname": "Tenant",
                 "required": true
               },
               {
                 "name": "name",
                 "type": "string",
+                "displayname": "Name",
                 "required": true
               },
               {
                 "name": "description",
+                "displayname": "Description",
                 "type": "string",
                 "required": false
               }
@@ -168,20 +216,24 @@
     },
     "system": {
       "name": "system",
+      "displayname": "System",
       "description": "System",
       "baselineattributes": [
         {
           "name": "tenant",
           "type": "string",
+          "displayname": "Tenant",
           "required": true
         },
         {
           "name": "name",
           "type": "string",
+          "displayname": "Name",
           "required": true
         },
         {
           "name": "description",
+          "displayname": "Description",
           "type": "string",
           "required": false
         }
@@ -189,6 +241,7 @@
       "additionalattributes": [
         {
           "name": "version",
+          "displayname": "Version",
           "type": "string",
           "required": true
         }
@@ -196,20 +249,24 @@
     },
     "user": {
       "name": "user",
+      "displayname": "User",
       "description": "User",
       "baselineattributes": [
         {
           "name": "tenant",
           "type": "string",
+          "displayname": "Tenant",
           "required": true
         },
         {
           "name": "name",
           "type": "string",
+          "displayname": "Name",
           "required": true
         },
         {
           "name": "description",
+          "displayname": "Description",
           "type": "string",
           "required": false
         }
@@ -217,23 +274,28 @@
       "additionalattributes": [
         {
           "name": "system",
+          "displayname": "System",
           "type": "reference",
           "entity": {
             "name": "system",
+            "displayname": "System",
             "description": "System",
             "baselineattributes": [
               {
                 "name": "tenant",
                 "type": "string",
+                "displayname": "Tenant",
                 "required": true
               },
               {
                 "name": "name",
                 "type": "string",
+                "displayname": "Name",
                 "required": true
               },
               {
                 "name": "description",
+                "displayname": "Description",
                 "type": "string",
                 "required": false
               }
@@ -241,6 +303,7 @@
             "additionalattributes": [
               {
                 "name": "version",
+                "displayname": "Version",
                 "type": "string",
                 "required": true
               }
@@ -250,6 +313,7 @@
         },
         {
           "name": "fullname",
+          "displayname": "FullName",
           "type": "string",
           "required": true
         }
@@ -257,20 +321,24 @@
     },
     "relation": {
       "name": "relation",
+      "displayname": "Relation",
       "description": "Relation",
       "baselineattributes": [
         {
           "name": "tenant",
           "type": "string",
+          "displayname": "Tenant",
           "required": true
         },
         {
           "name": "name",
           "type": "string",
+          "displayname": "Name",
           "required": true
         },
         {
           "name": "description",
+          "displayname": "Description",
           "type": "string",
           "required": false
         }
@@ -279,22 +347,27 @@
         {
           "name": "relation",
           "type": "reference",
+          "displayname": "Company Relation",
           "entity": {
             "name": "company",
+            "displayname": "Company",
             "description": "Company",
             "baselineattributes": [
               {
                 "name": "tenant",
                 "type": "string",
+                "displayname": "Tenant",
                 "required": true
               },
               {
                 "name": "name",
                 "type": "string",
+                "displayname": "Name",
                 "required": true
               },
               {
                 "name": "description",
+                "displayname": "Description",
                 "type": "string",
                 "required": false
               }
@@ -302,48 +375,58 @@
             "additionalattributes": [
               {
                 "name": "vatnumber",
+                "displayname": "Vat Number",
                 "type": "string",
                 "required": true
               },
               {
                 "name": "phonenumber",
+                "displayname": "Phone Number",
                 "type": "string",
                 "required": false
               },
               {
                 "name": "address",
+                "displayname": "Address",
                 "type": "string",
                 "required": false
               },
               {
                 "name": "city",
+                "displayname": "City",
                 "type": "string",
                 "required": false
               },
               {
                 "name": "postalcode",
+                "displayname": "Postal Code",
                 "type": "string",
                 "required": false
               },
               {
                 "name": "country",
+                "displayname": "Country",
                 "type": "reference",
                 "entity": {
                   "name": "country",
+                  "displayname": "Country",
                   "description": "Country",
                   "baselineattributes": [
                     {
                       "name": "tenant",
                       "type": "string",
+                      "displayname": "Tenant",
                       "required": true
                     },
                     {
                       "name": "name",
                       "type": "string",
+                      "displayname": "Name",
                       "required": true
                     },
                     {
                       "name": "description",
+                      "displayname": "Description",
                       "type": "string",
                       "required": false
                     }
@@ -364,11 +447,13 @@
         },
         {
           "name": "relationtype",
+          "displayname": "Relation Type",
           "type": "string",
           "required": false
         },
         {
           "name": "groups",
+          "displayname": "Groups",
           "type": "array",
           "entity": {
             "name": "group",
@@ -377,15 +462,18 @@
               {
                 "name": "tenant",
                 "type": "string",
+                "displayname": "Tenant",
                 "required": true
               },
               {
                 "name": "name",
                 "type": "string",
+                "displayname": "Name",
                 "required": true
               },
               {
                 "name": "description",
+                "displayname": "Description",
                 "type": "string",
                 "required": false
               }
@@ -393,11 +481,13 @@
             "additionalattributes": [
               {
                 "name": "hidden",
+                "displayname": "Hidden",
                 "type": "boolean",
                 "required": false
               },
               {
                 "name": "notesid",
+                "displayname": "NotesId",
                 "type": "string",
                 "required": true
               }
@@ -413,15 +503,18 @@
         {
           "name": "tenant",
           "type": "string",
+          "displayname": "Tenant",
           "required": true
         },
         {
           "name": "name",
           "type": "string",
+          "displayname": "Name",
           "required": true
         },
         {
           "name": "description",
+          "displayname": "Description",
           "type": "string",
           "required": false
         }
@@ -429,48 +522,58 @@
       "additionalattributes": [
         {
           "name": "email",
+          "displayname": "Email",
           "type": "string",
           "required": false
         },
         {
           "name": "displayname",
+          "displayname": "DisplayName",
           "type": "string",
           "required": false
         },
         {
           "name": "firstname",
+          "displayname": "FirstName",
           "type": "string",
           "required": true
         },
         {
           "name": "lastname",
+          "displayname": "LastName",
           "type": "string",
           "required": true
         },
         {
           "name": "uniqueid",
+          "displayname": "Unique Id",
           "type": "string",
           "required": true
         },
         {
           "name": "nationality",
+          "displayname": "Nationality",
           "type": "reference",
           "entity": {
             "name": "country",
+            "displayname": "Country",
             "description": "Country",
             "baselineattributes": [
               {
                 "name": "tenant",
                 "type": "string",
+                "displayname": "Tenant",
                 "required": true
               },
               {
                 "name": "name",
                 "type": "string",
+                "displayname": "Name",
                 "required": true
               },
               {
                 "name": "description",
+                "displayname": "Description",
                 "type": "string",
                 "required": false
               }
@@ -487,23 +590,28 @@
         },
         {
           "name": "users",
+          "displayname": "Users",
           "type": "array",
           "entity": {
             "name": "relation",
+            "displayname": "Relation",
             "description": "Relation",
             "baselineattributes": [
               {
                 "name": "tenant",
                 "type": "string",
+                "displayname": "Tenant",
                 "required": true
               },
               {
                 "name": "name",
                 "type": "string",
+                "displayname": "Name",
                 "required": true
               },
               {
                 "name": "description",
+                "displayname": "Description",
                 "type": "string",
                 "required": false
               }
@@ -512,22 +620,27 @@
               {
                 "name": "relation",
                 "type": "reference",
+                "displayname": "Company Relation",
                 "entity": {
                   "name": "company",
+                  "displayname": "Company",
                   "description": "Company",
                   "baselineattributes": [
                     {
                       "name": "tenant",
                       "type": "string",
+                      "displayname": "Tenant",
                       "required": true
                     },
                     {
                       "name": "name",
                       "type": "string",
+                      "displayname": "Name",
                       "required": true
                     },
                     {
                       "name": "description",
+                      "displayname": "Description",
                       "type": "string",
                       "required": false
                     }
@@ -535,48 +648,58 @@
                   "additionalattributes": [
                     {
                       "name": "vatnumber",
+                      "displayname": "Vat Number",
                       "type": "string",
                       "required": true
                     },
                     {
                       "name": "phonenumber",
+                      "displayname": "Phone Number",
                       "type": "string",
                       "required": false
                     },
                     {
                       "name": "address",
+                      "displayname": "Address",
                       "type": "string",
                       "required": false
                     },
                     {
                       "name": "city",
+                      "displayname": "City",
                       "type": "string",
                       "required": false
                     },
                     {
                       "name": "postalcode",
+                      "displayname": "Postal Code",
                       "type": "string",
                       "required": false
                     },
                     {
                       "name": "country",
+                      "displayname": "Country",
                       "type": "reference",
                       "entity": {
                         "name": "country",
+                        "displayname": "Country",
                         "description": "Country",
                         "baselineattributes": [
                           {
                             "name": "tenant",
                             "type": "string",
+                            "displayname": "Tenant",
                             "required": true
                           },
                           {
                             "name": "name",
                             "type": "string",
+                            "displayname": "Name",
                             "required": true
                           },
                           {
                             "name": "description",
+                            "displayname": "Description",
                             "type": "string",
                             "required": false
                           }
@@ -597,11 +720,13 @@
               },
               {
                 "name": "relationtype",
+                "displayname": "Relation Type",
                 "type": "string",
                 "required": false
               },
               {
                 "name": "groups",
+                "displayname": "Groups",
                 "type": "array",
                 "entity": {
                   "name": "group",
@@ -610,15 +735,18 @@
                     {
                       "name": "tenant",
                       "type": "string",
+                      "displayname": "Tenant",
                       "required": true
                     },
                     {
                       "name": "name",
                       "type": "string",
+                      "displayname": "Name",
                       "required": true
                     },
                     {
                       "name": "description",
+                      "displayname": "Description",
                       "type": "string",
                       "required": false
                     }
@@ -626,11 +754,13 @@
                   "additionalattributes": [
                     {
                       "name": "hidden",
+                      "displayname": "Hidden",
                       "type": "boolean",
                       "required": false
                     },
                     {
                       "name": "notesid",
+                      "displayname": "NotesId",
                       "type": "string",
                       "required": true
                     }
@@ -733,20 +863,24 @@
         "objectname": "User",
         "entity": {
           "name": "user",
+          "displayname": "User",
           "description": "User",
           "baselineattributes": [
             {
               "name": "tenant",
               "type": "string",
+              "displayname": "Tenant",
               "required": true
             },
             {
               "name": "name",
               "type": "string",
+              "displayname": "Name",
               "required": true
             },
             {
               "name": "description",
+              "displayname": "Description",
               "type": "string",
               "required": false
             }
@@ -754,23 +888,28 @@
           "additionalattributes": [
             {
               "name": "system",
+              "displayname": "System",
               "type": "reference",
               "entity": {
                 "name": "system",
+                "displayname": "System",
                 "description": "System",
                 "baselineattributes": [
                   {
                     "name": "tenant",
                     "type": "string",
+                    "displayname": "Tenant",
                     "required": true
                   },
                   {
                     "name": "name",
                     "type": "string",
+                    "displayname": "Name",
                     "required": true
                   },
                   {
                     "name": "description",
+                    "displayname": "Description",
                     "type": "string",
                     "required": false
                   }
@@ -778,6 +917,7 @@
                 "additionalattributes": [
                   {
                     "name": "version",
+                    "displayname": "Version",
                     "type": "string",
                     "required": true
                   }
@@ -787,6 +927,7 @@
             },
             {
               "name": "fullname",
+              "displayname": "FullName",
               "type": "string",
               "required": true
             }
@@ -885,15 +1026,18 @@
             {
               "name": "tenant",
               "type": "string",
+              "displayname": "Tenant",
               "required": true
             },
             {
               "name": "name",
               "type": "string",
+              "displayname": "Name",
               "required": true
             },
             {
               "name": "description",
+              "displayname": "Description",
               "type": "string",
               "required": false
             }
@@ -901,11 +1045,13 @@
           "additionalattributes": [
             {
               "name": "hidden",
+              "displayname": "Hidden",
               "type": "boolean",
               "required": false
             },
             {
               "name": "notesid",
+              "displayname": "NotesId",
               "type": "string",
               "required": true
             }
@@ -999,20 +1145,24 @@
         "objectname": "Country",
         "entity": {
           "name": "country",
+          "displayname": "Country",
           "description": "Country",
           "baselineattributes": [
             {
               "name": "tenant",
               "type": "string",
+              "displayname": "Tenant",
               "required": true
             },
             {
               "name": "name",
               "type": "string",
+              "displayname": "Name",
               "required": true
             },
             {
               "name": "description",
+              "displayname": "Description",
               "type": "string",
               "required": false
             }
@@ -1113,20 +1263,24 @@
         "objectname": "Company",
         "entity": {
           "name": "company",
+          "displayname": "Company",
           "description": "Company",
           "baselineattributes": [
             {
               "name": "tenant",
               "type": "string",
+              "displayname": "Tenant",
               "required": true
             },
             {
               "name": "name",
               "type": "string",
+              "displayname": "Name",
               "required": true
             },
             {
               "name": "description",
+              "displayname": "Description",
               "type": "string",
               "required": false
             }
@@ -1134,48 +1288,58 @@
           "additionalattributes": [
             {
               "name": "vatnumber",
+              "displayname": "Vat Number",
               "type": "string",
               "required": true
             },
             {
               "name": "phonenumber",
+              "displayname": "Phone Number",
               "type": "string",
               "required": false
             },
             {
               "name": "address",
+              "displayname": "Address",
               "type": "string",
               "required": false
             },
             {
               "name": "city",
+              "displayname": "City",
               "type": "string",
               "required": false
             },
             {
               "name": "postalcode",
+              "displayname": "Postal Code",
               "type": "string",
               "required": false
             },
             {
               "name": "country",
+              "displayname": "Country",
               "type": "reference",
               "entity": {
                 "name": "country",
+                "displayname": "Country",
                 "description": "Country",
                 "baselineattributes": [
                   {
                     "name": "tenant",
                     "type": "string",
+                    "displayname": "Tenant",
                     "required": true
                   },
                   {
                     "name": "name",
                     "type": "string",
+                    "displayname": "Name",
                     "required": true
                   },
                   {
                     "name": "description",
+                    "displayname": "Description",
                     "type": "string",
                     "required": false
                   }
@@ -1285,15 +1449,18 @@
             {
               "name": "tenant",
               "type": "string",
+              "displayname": "Tenant",
               "required": true
             },
             {
               "name": "name",
               "type": "string",
+              "displayname": "Name",
               "required": true
             },
             {
               "name": "description",
+              "displayname": "Description",
               "type": "string",
               "required": false
             }
@@ -1301,48 +1468,58 @@
           "additionalattributes": [
             {
               "name": "email",
+              "displayname": "Email",
               "type": "string",
               "required": false
             },
             {
               "name": "displayname",
+              "displayname": "DisplayName",
               "type": "string",
               "required": false
             },
             {
               "name": "firstname",
+              "displayname": "FirstName",
               "type": "string",
               "required": true
             },
             {
               "name": "lastname",
+              "displayname": "LastName",
               "type": "string",
               "required": true
             },
             {
               "name": "uniqueid",
+              "displayname": "Unique Id",
               "type": "string",
               "required": true
             },
             {
               "name": "nationality",
+              "displayname": "Nationality",
               "type": "reference",
               "entity": {
                 "name": "country",
+                "displayname": "Country",
                 "description": "Country",
                 "baselineattributes": [
                   {
                     "name": "tenant",
                     "type": "string",
+                    "displayname": "Tenant",
                     "required": true
                   },
                   {
                     "name": "name",
                     "type": "string",
+                    "displayname": "Name",
                     "required": true
                   },
                   {
                     "name": "description",
+                    "displayname": "Description",
                     "type": "string",
                     "required": false
                   }
@@ -1359,23 +1536,28 @@
             },
             {
               "name": "users",
+              "displayname": "Users",
               "type": "array",
               "entity": {
                 "name": "relation",
+                "displayname": "Relation",
                 "description": "Relation",
                 "baselineattributes": [
                   {
                     "name": "tenant",
                     "type": "string",
+                    "displayname": "Tenant",
                     "required": true
                   },
                   {
                     "name": "name",
                     "type": "string",
+                    "displayname": "Name",
                     "required": true
                   },
                   {
                     "name": "description",
+                    "displayname": "Description",
                     "type": "string",
                     "required": false
                   }
@@ -1384,22 +1566,27 @@
                   {
                     "name": "relation",
                     "type": "reference",
+                    "displayname": "Company Relation",
                     "entity": {
                       "name": "company",
+                      "displayname": "Company",
                       "description": "Company",
                       "baselineattributes": [
                         {
                           "name": "tenant",
                           "type": "string",
+                          "displayname": "Tenant",
                           "required": true
                         },
                         {
                           "name": "name",
                           "type": "string",
+                          "displayname": "Name",
                           "required": true
                         },
                         {
                           "name": "description",
+                          "displayname": "Description",
                           "type": "string",
                           "required": false
                         }
@@ -1407,48 +1594,58 @@
                       "additionalattributes": [
                         {
                           "name": "vatnumber",
+                          "displayname": "Vat Number",
                           "type": "string",
                           "required": true
                         },
                         {
                           "name": "phonenumber",
+                          "displayname": "Phone Number",
                           "type": "string",
                           "required": false
                         },
                         {
                           "name": "address",
+                          "displayname": "Address",
                           "type": "string",
                           "required": false
                         },
                         {
                           "name": "city",
+                          "displayname": "City",
                           "type": "string",
                           "required": false
                         },
                         {
                           "name": "postalcode",
+                          "displayname": "Postal Code",
                           "type": "string",
                           "required": false
                         },
                         {
                           "name": "country",
+                          "displayname": "Country",
                           "type": "reference",
                           "entity": {
                             "name": "country",
+                            "displayname": "Country",
                             "description": "Country",
                             "baselineattributes": [
                               {
                                 "name": "tenant",
                                 "type": "string",
+                                "displayname": "Tenant",
                                 "required": true
                               },
                               {
                                 "name": "name",
                                 "type": "string",
+                                "displayname": "Name",
                                 "required": true
                               },
                               {
                                 "name": "description",
+                                "displayname": "Description",
                                 "type": "string",
                                 "required": false
                               }
@@ -1469,11 +1666,13 @@
                   },
                   {
                     "name": "relationtype",
+                    "displayname": "Relation Type",
                     "type": "string",
                     "required": false
                   },
                   {
                     "name": "groups",
+                    "displayname": "Groups",
                     "type": "array",
                     "entity": {
                       "name": "group",
@@ -1482,15 +1681,18 @@
                         {
                           "name": "tenant",
                           "type": "string",
+                          "displayname": "Tenant",
                           "required": true
                         },
                         {
                           "name": "name",
                           "type": "string",
+                          "displayname": "Name",
                           "required": true
                         },
                         {
                           "name": "description",
+                          "displayname": "Description",
                           "type": "string",
                           "required": false
                         }
@@ -1498,11 +1700,13 @@
                       "additionalattributes": [
                         {
                           "name": "hidden",
+                          "displayname": "Hidden",
                           "type": "boolean",
                           "required": false
                         },
                         {
                           "name": "notesid",
+                          "displayname": "NotesId",
                           "type": "string",
                           "required": true
                         }
@@ -1592,7 +1796,8 @@
             "type": "page"
           }
         }
-      ]
+      ],
+      "viewitem": null
     },
     {
       "name": "relation",
@@ -1603,20 +1808,24 @@
         "objectname": "Relation",
         "entity": {
           "name": "relation",
+          "displayname": "Relation",
           "description": "Relation",
           "baselineattributes": [
             {
               "name": "tenant",
               "type": "string",
+              "displayname": "Tenant",
               "required": true
             },
             {
               "name": "name",
               "type": "string",
+              "displayname": "Name",
               "required": true
             },
             {
               "name": "description",
+              "displayname": "Description",
               "type": "string",
               "required": false
             }
@@ -1625,22 +1834,27 @@
             {
               "name": "relation",
               "type": "reference",
+              "displayname": "Company Relation",
               "entity": {
                 "name": "company",
+                "displayname": "Company",
                 "description": "Company",
                 "baselineattributes": [
                   {
                     "name": "tenant",
                     "type": "string",
+                    "displayname": "Tenant",
                     "required": true
                   },
                   {
                     "name": "name",
                     "type": "string",
+                    "displayname": "Name",
                     "required": true
                   },
                   {
                     "name": "description",
+                    "displayname": "Description",
                     "type": "string",
                     "required": false
                   }
@@ -1648,48 +1862,58 @@
                 "additionalattributes": [
                   {
                     "name": "vatnumber",
+                    "displayname": "Vat Number",
                     "type": "string",
                     "required": true
                   },
                   {
                     "name": "phonenumber",
+                    "displayname": "Phone Number",
                     "type": "string",
                     "required": false
                   },
                   {
                     "name": "address",
+                    "displayname": "Address",
                     "type": "string",
                     "required": false
                   },
                   {
                     "name": "city",
+                    "displayname": "City",
                     "type": "string",
                     "required": false
                   },
                   {
                     "name": "postalcode",
+                    "displayname": "Postal Code",
                     "type": "string",
                     "required": false
                   },
                   {
                     "name": "country",
+                    "displayname": "Country",
                     "type": "reference",
                     "entity": {
                       "name": "country",
+                      "displayname": "Country",
                       "description": "Country",
                       "baselineattributes": [
                         {
                           "name": "tenant",
                           "type": "string",
+                          "displayname": "Tenant",
                           "required": true
                         },
                         {
                           "name": "name",
                           "type": "string",
+                          "displayname": "Name",
                           "required": true
                         },
                         {
                           "name": "description",
+                          "displayname": "Description",
                           "type": "string",
                           "required": false
                         }
@@ -1710,11 +1934,13 @@
             },
             {
               "name": "relationtype",
+              "displayname": "Relation Type",
               "type": "string",
               "required": false
             },
             {
               "name": "groups",
+              "displayname": "Groups",
               "type": "array",
               "entity": {
                 "name": "group",
@@ -1723,15 +1949,18 @@
                   {
                     "name": "tenant",
                     "type": "string",
+                    "displayname": "Tenant",
                     "required": true
                   },
                   {
                     "name": "name",
                     "type": "string",
+                    "displayname": "Name",
                     "required": true
                   },
                   {
                     "name": "description",
+                    "displayname": "Description",
                     "type": "string",
                     "required": false
                   }
@@ -1739,11 +1968,13 @@
                 "additionalattributes": [
                   {
                     "name": "hidden",
+                    "displayname": "Hidden",
                     "type": "boolean",
                     "required": false
                   },
                   {
                     "name": "notesid",
+                    "displayname": "NotesId",
                     "type": "string",
                     "required": true
                   }
@@ -1840,20 +2071,24 @@
         "objectname": "System",
         "entity": {
           "name": "system",
+          "displayname": "System",
           "description": "System",
           "baselineattributes": [
             {
               "name": "tenant",
               "type": "string",
+              "displayname": "Tenant",
               "required": true
             },
             {
               "name": "name",
               "type": "string",
+              "displayname": "Name",
               "required": true
             },
             {
               "name": "description",
+              "displayname": "Description",
               "type": "string",
               "required": false
             }
@@ -1861,6 +2096,7 @@
           "additionalattributes": [
             {
               "name": "version",
+              "displayname": "Version",
               "type": "string",
               "required": true
             }
