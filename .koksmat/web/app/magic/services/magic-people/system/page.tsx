@@ -7,7 +7,7 @@ set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
 keep: false
 ---
 */ 
-/* guldbar */
+/* dumle */
 import SearchSystem from "@/app/magic/services/magic-people/system/components/search";
 /*
 import CreateSystem from "@/app/magic/services/magic-people/system/components/create";

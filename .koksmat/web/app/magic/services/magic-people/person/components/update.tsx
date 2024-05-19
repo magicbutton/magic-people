@@ -9,12 +9,27 @@ keep: false
 import { useService } from "@/koksmat/useservice";
 import { useState } from "react";
 import {PersonItem} from "../applogic/model";
+import {PersonSchema} from "../applogic/model";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 import { Button } from "@/components/ui/button";
-
+import { toast } from "@/components/ui/use-toast"
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+  } from "@/components/ui/form"
+  import { Input } from "@/components/ui/input"
 /* marsbar */
 
 export default function UpdatePerson(props: { id: number }) {
     const { id } = props;
+ 
     const [transactionId, settransactionId] = useState(0);
     const readResult = useService<PersonItem>(
       "magic-people.person",
@@ -24,39 +39,182 @@ export default function UpdatePerson(props: { id: number }) {
       transactionId.toString()
     );
     const person = readResult.data;
+    function onSubmit(data: z.infer<typeof PersonSchema>) {
+        toast({
+          title: "You submitted the following values:",
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+              <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+            </pre>
+          ),
+        })
+      }
+    const form = useForm<z.infer<typeof PersonSchema>>({
+        resolver: zodResolver(PersonSchema),
+        defaultValues: person,
+      })
+  
     return (
       <div>
-      <form>
+      <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+       
           
     {person && <div>
-        <div>
-        <div className="font-bold" >Tenant</div>
-        <div><input type="text" name="tenant" value={person.tenant}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Name</div>
-        <div><input type="text" name="name" value={person.name}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Description</div>
-        <div><input type="text" name="description" value={person.description}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Email</div>
-        <div><input type="text" name="email" value={person.email}></input></div>
-    </div>    <div>
-        <div className="font-bold" >DisplayName</div>
-        <div><input type="text" name="displayname" value={person.displayname}></input></div>
-    </div>    <div>
-        <div className="font-bold" >FirstName</div>
-        <div><input type="text" name="firstname" value={person.firstname}></input></div>
-    </div>    <div>
-        <div className="font-bold" >LastName</div>
-        <div><input type="text" name="lastname" value={person.lastname}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Unique Id</div>
-        <div><input type="text" name="uniqueid" value={person.uniqueid}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Nationality</div>
-        <div><input type="text" name="nationality_id" value={person.nationality_id}></input></div>
-    </div>
+        {/* string */}<FormField
+ control={form.control}
+ name="tenant"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Tenant</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="name"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Name</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="description"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Description</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="email"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Email</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="displayname"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>DisplayName</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="firstname"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>FirstName</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="lastname"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>LastName</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="uniqueid"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Unique Id</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* reference */}<FormField
+ control={form.control}
+ name="nationality_id"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Nationality</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+
     <div>
    
     </div>
@@ -64,7 +222,8 @@ export default function UpdatePerson(props: { id: number }) {
 
 
       <Button>Update</Button>
-     </form>
+      </form>
+     </Form>
       </div>
     );
   }

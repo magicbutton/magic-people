@@ -6,7 +6,7 @@ set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
 keep: false
 ---
 */
-/* guldbar */
+/* citronmåne */
 
 import {
     Card,
@@ -25,17 +25,26 @@ import {
     SheetTitle,
     SheetTrigger,
   } from "@/components/ui/sheet";
-  import { Button } from "@/components/ui/button";
 
+  import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+  } from "@/components/ui/dropdown-menu"
+  import { Ellipsis } from "lucide-react";
+  import { Button } from "@/components/ui/button";
+  import {UserItem} from "../applogic/model";
   import ReadUser from "./read";
   import UpdateUser from "./update";
 
   export default function UserSmallCard(props: {
-    id: number;
-    name: string;
-    description: string;
+    item: UserItem;
+    onClick?: () => void;
   }) {
-    const { name, description ,id} = props;
+    const { item,onClick} = props;
    
     const [isEditing, setisEditing] = useState(false);
     const [isViewing, setisViewing] = useState(false);
@@ -43,22 +52,60 @@ import {
 
     return (
         <div>
-      <Card className="m-2 hover:shadow-lg cursor-pointer"  >
+      <Card className="m-2 hover:shadow-lg cursor-pointer" onClick={onClick}  >
         <CardHeader>
-          <CardTitle>{name}</CardTitle>
-          <CardDescription>{description}</CardDescription>
+          <CardTitle>
+          <div className="flex">
+          <div>
+          {item.name}
+          </div>
+          <div className="grow">
+          </div>
+          <div>
+          <DropdownMenu>
+          <DropdownMenuTrigger  onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <Ellipsis size={"18px"} />
+          
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuLabel>{item.name}</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+            onClick={(e) => {
+              e.stopPropagation();
+              setisViewing(true);
+            }}
+          >
+            View
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={(e) => {
+              e.stopPropagation();
+              setisEditing(true);
+            }}
+          >
+            Edit
+          </DropdownMenuItem>          
+          </DropdownMenuContent>
+        </DropdownMenu>
+
+            </div>
+            </div>
+        </CardTitle>
+          <CardDescription>{item.description}</CardDescription>
         </CardHeader>
         <CardContent></CardContent>
-        <CardFooter>
-        <Button variant="link" onClick={()=>setisViewing(true)}>View</Button>
-        <Button variant="link" onClick={()=>setisEditing(true)}>Edit</Button> </CardFooter>
+        <CardFooter></CardFooter>
       </Card>
       <Sheet open={isViewing} onOpenChange={setisViewing}>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>{name}</SheetTitle>
+          <SheetTitle>{item.name}</SheetTitle>
           <SheetDescription>
-            {isViewing && (id>0) && <ReadUser id={id} />}
+            {isViewing && (item.id>0) && <ReadUser id={item.id} />}
           </SheetDescription>
         </SheetHeader>
       </SheetContent>
@@ -66,9 +113,9 @@ import {
     <Sheet open={isEditing} onOpenChange={setisEditing}>
     <SheetContent>
       <SheetHeader>
-        <SheetTitle>{name}</SheetTitle>
+        <SheetTitle>{item.name}</SheetTitle>
         <SheetDescription>
-          {isEditing && (id>0) && <UpdateUser id={id} />}
+          {isEditing && (item.id>0) && <UpdateUser id={item.id} />}
         </SheetDescription>
       </SheetHeader>
     </SheetContent>

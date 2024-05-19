@@ -1,4 +1,14 @@
-
+    
+/* 
+File have been automatically created. To prevent the file from getting overwritten
+set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
+---
+keep: false
+---
+*/       
+"use client";
+import { z } from "zod";
+// spunk
 // Country
 export interface CountryItem  {
     id: number;
@@ -10,4 +20,15 @@ export interface CountryItem  {
     code : string ;
 
 }
+
+
+// Country
+export const CountrySchema = z.object({  
+   
+        tenant : z.string(), 
+    name : z.string(), 
+    description : z.string(), 
+    code : z.string(), 
+
+});
 

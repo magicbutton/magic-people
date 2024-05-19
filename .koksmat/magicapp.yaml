@@ -3,63 +3,86 @@ name: people
 type: magicservice
 organisation: magicbutton
 magicappversion: v0.0.1
-description: A simple app to manage users, groups and memberships
+description: |
+  Application focusing on having a single point of entry in the form of a `person` to find all related information 
+  - Users, Companies, Groups, Relations, Systems, Countries
 react:
-  components:
-    textformfield: &TextFormField
-      name: formfield
+  templates:
+    formfield: &formfield
       markup: |
-        export function FormField<T>(props: {value:T, onChange: (value:T) => void}) {
-        const {value, onChange} = props;
-        return (
-        <input type="text" value={value} onChange={(e) => onChange(e.target.value)} />
-        )
-        }
+        <FormField
+         control={form.control}
+         name="##NAME##"
+         render={({ field }) => (
+           <FormItem>
+             <FormLabel>##LABEL##</FormLabel>
+             <FormControl>
+               ##FORMCONTROL##
+             </FormControl>
+             <FormDescription>
+               ##DESCRIPTION##
+             </FormDescription>
+             <FormMessage />
+           </FormItem>
+         )}
+        />
+  components:
+    stringformfield: &StringFormField
+      name: formfield
+      template: *formfield
+      markup: |
+        <Input placeholder="##PLACEHOLDER##" {...field} />
+
     numberformfield: &NumberFormField
       name: formfield
+      template: *formfield
+
       markup: |
-        export function FormField<T>(props: {value:T, onChange: (value:T) => void}) {
-        const {value, onChange} = props;
-        return (
-        <input type="number" value={value} onChange={(e) => onChange(e.target.value)} />
-        )
-        }
-    dateformfield: &DateFormField
+        <Input placeholder="##PLACEHOLDER##" {...field} />
+    intformfield: &IntFormField
       name: formfield
+      template: *formfield
+
       markup: |
-        export function FormField<T>(props: {value:T, onChange: (value:T) => void}) {
-        const {value, onChange} = props;
-        return (
-        <input type="date" value={value} onChange={(e) => onChange(e.target.value)} />
-        )
-        }
+        <Input placeholder="##PLACEHOLDER##" {...field} />
+    datetimeformfield: &DateTimeFormField
+      name: formfield
+      template: *formfield
+
+      markup: |
+        <Input placeholder="##PLACEHOLDER##" {...field} />
     booleanformfield: &BooleanFormField
       name: formfield
+      template: *formfield
       markup: |
-        export function FormField<T>(props: {value:T, onChange: (value:T) => void}) {
-        const {value, onChange} = props;
-        return (
-        <input type="checkbox" checked={value} onChange={(e) => onChange(e.target.checked)} />
-        )
-        }
+        <div>Boolean not implemented</div>
+      # markup: |
+      #   <Input placeholder="##PLACEHOLDER##" {...field} />
     arrayformfield: &ArrayFormField
       name: formfield
+      template: *formfield
+
       markup: |
-        export function FormField<T>(props: {value:T, onChange: (value:T) => void}) {
-        const {value, onChange} = props;
-        return (
-        <input type="text" value={value} onChange={(e) => onChange(e.target.value)} />
-        )
-        }
+        <Input placeholder="##PLACEHOLDER##" {...field} />
     lookupformfield: &LookupFormField
       name: formfield
+      template: *formfield
+
       markup: |
-        export function FormField<T>(props: {value:T, onChange: (value:T) => void}) {
-        const {value, onChange} = props;
-        return (
-        <input type="text" value={value} onChange={(e) => onChange(e.target.value)} />
-        )
-        }
+        <Input placeholder="##PLACEHOLDER##" {...field} />
+    referenceformfield: &ReferenceFormField
+      name: formfield
+      template: *formfield
+
+      markup: |
+        <Input placeholder="##PLACEHOLDER##" {...field} />
+
+    jsonformfield: &JSONFormField
+      name: formfield
+      template: *formfield
+
+      markup: |
+        <Input placeholder="##PLACEHOLDER##" {...field} />
     viewitem: &ViewItem
       name: viewitem
       markup: |
@@ -87,13 +110,18 @@ react:
 defaults:
   viewitem: *ViewItem
   edititem: *EditItem
-  primitivity:
+  primitive:
+    json:
+      formfield: *JSONFormField
+
     string:
-      formfield: *TextFormField
+      formfield: *StringFormField
     number:
       formfield: *NumberFormField
-    date:
-      formfield: *DateFormField
+    datetime:
+      formfield: *DateTimeFormField
+    int:
+      formfield: *IntFormField
     boolean:
       formfield: *BooleanFormField
     array:

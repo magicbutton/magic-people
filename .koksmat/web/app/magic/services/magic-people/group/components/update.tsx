@@ -9,12 +9,27 @@ keep: false
 import { useService } from "@/koksmat/useservice";
 import { useState } from "react";
 import {GroupItem} from "../applogic/model";
+import {GroupSchema} from "../applogic/model";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 import { Button } from "@/components/ui/button";
-
+import { toast } from "@/components/ui/use-toast"
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+  } from "@/components/ui/form"
+  import { Input } from "@/components/ui/input"
 /* marsbar */
 
 export default function UpdateGroup(props: { id: number }) {
     const { id } = props;
+ 
     const [transactionId, settransactionId] = useState(0);
     const readResult = useService<GroupItem>(
       "magic-people.group",
@@ -24,27 +39,114 @@ export default function UpdateGroup(props: { id: number }) {
       transactionId.toString()
     );
     const group = readResult.data;
+    function onSubmit(data: z.infer<typeof GroupSchema>) {
+        toast({
+          title: "You submitted the following values:",
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+              <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+            </pre>
+          ),
+        })
+      }
+    const form = useForm<z.infer<typeof GroupSchema>>({
+        resolver: zodResolver(GroupSchema),
+        defaultValues: group,
+      })
+  
     return (
       <div>
-      <form>
+      <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+       
           
     {group && <div>
-        <div>
-        <div className="font-bold" >Tenant</div>
-        <div><input type="text" name="tenant" value={group.tenant}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Name</div>
-        <div><input type="text" name="name" value={group.name}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Description</div>
-        <div><input type="text" name="description" value={group.description}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Hidden</div>
-        <div><input type="text" name="hidden" value={group.hidden}></input></div>
-    </div>    <div>
-        <div className="font-bold" >NotesId</div>
-        <div><input type="text" name="notesid" value={group.notesid}></input></div>
-    </div>
+        {/* string */}<FormField
+ control={form.control}
+ name="tenant"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Tenant</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="name"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Name</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="description"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Description</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* boolean */}<FormField
+ control={form.control}
+ name="hidden"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Hidden</FormLabel>
+     <FormControl>
+       <div>Boolean not implemented</div>
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="notesid"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>NotesId</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+
     <div>
    
     </div>
@@ -52,7 +154,8 @@ export default function UpdateGroup(props: { id: number }) {
 
 
       <Button>Update</Button>
-     </form>
+      </form>
+     </Form>
       </div>
     );
   }

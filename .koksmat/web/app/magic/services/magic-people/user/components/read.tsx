@@ -47,15 +47,15 @@ export default function ReadUser(props: { id: number }) {
     <div>
         <div>
         <div className="font-bold" >id</div>
-        <div>{user.number}</div>
+        <div>{user.id}</div>
     </div>
         <div>
         <div className="font-bold" >created_at</div>
-        <div>{user.number}</div>
+        <div>{user.created_at}</div>
     </div>
         <div>
         <div className="font-bold" >updated_at</div>
-        <div>{user.number}</div>
+        <div>{user.updated_at}</div>
     </div>
     </div>
     </div>}

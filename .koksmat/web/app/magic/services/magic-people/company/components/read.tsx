@@ -59,15 +59,15 @@ export default function ReadCompany(props: { id: number }) {
     <div>
         <div>
         <div className="font-bold" >id</div>
-        <div>{company.number}</div>
+        <div>{company.id}</div>
     </div>
         <div>
         <div className="font-bold" >created_at</div>
-        <div>{company.number}</div>
+        <div>{company.created_at}</div>
     </div>
         <div>
         <div className="font-bold" >updated_at</div>
-        <div>{company.number}</div>
+        <div>{company.updated_at}</div>
     </div>
     </div>
     </div>}

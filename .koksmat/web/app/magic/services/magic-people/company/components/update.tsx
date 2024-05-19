@@ -9,12 +9,27 @@ keep: false
 import { useService } from "@/koksmat/useservice";
 import { useState } from "react";
 import {CompanyItem} from "../applogic/model";
+import {CompanySchema} from "../applogic/model";
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 import { Button } from "@/components/ui/button";
-
+import { toast } from "@/components/ui/use-toast"
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+  } from "@/components/ui/form"
+  import { Input } from "@/components/ui/input"
 /* marsbar */
 
 export default function UpdateCompany(props: { id: number }) {
     const { id } = props;
+ 
     const [transactionId, settransactionId] = useState(0);
     const readResult = useService<CompanyItem>(
       "magic-people.company",
@@ -24,39 +39,182 @@ export default function UpdateCompany(props: { id: number }) {
       transactionId.toString()
     );
     const company = readResult.data;
+    function onSubmit(data: z.infer<typeof CompanySchema>) {
+        toast({
+          title: "You submitted the following values:",
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+              <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+            </pre>
+          ),
+        })
+      }
+    const form = useForm<z.infer<typeof CompanySchema>>({
+        resolver: zodResolver(CompanySchema),
+        defaultValues: company,
+      })
+  
     return (
       <div>
-      <form>
+      <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+       
           
     {company && <div>
-        <div>
-        <div className="font-bold" >Tenant</div>
-        <div><input type="text" name="tenant" value={company.tenant}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Name</div>
-        <div><input type="text" name="name" value={company.name}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Description</div>
-        <div><input type="text" name="description" value={company.description}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Vat Number</div>
-        <div><input type="text" name="vatnumber" value={company.vatnumber}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Phone Number</div>
-        <div><input type="text" name="phonenumber" value={company.phonenumber}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Address</div>
-        <div><input type="text" name="address" value={company.address}></input></div>
-    </div>    <div>
-        <div className="font-bold" >City</div>
-        <div><input type="text" name="city" value={company.city}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Postal Code</div>
-        <div><input type="text" name="postalcode" value={company.postalcode}></input></div>
-    </div>    <div>
-        <div className="font-bold" >Country</div>
-        <div><input type="text" name="country_id" value={company.country_id}></input></div>
-    </div>
+        {/* string */}<FormField
+ control={form.control}
+ name="tenant"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Tenant</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="name"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Name</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="description"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Description</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="vatnumber"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Vat Number</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="phonenumber"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Phone Number</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="address"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Address</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="city"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>City</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* string */}<FormField
+ control={form.control}
+ name="postalcode"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Postal Code</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+    {/* reference */}<FormField
+ control={form.control}
+ name="country_id"
+ render={({ field }) => (
+   <FormItem>
+     <FormLabel>Country</FormLabel>
+     <FormControl>
+       <Input placeholder="" {...field} />
+
+     </FormControl>
+     <FormDescription>
+       
+     </FormDescription>
+     <FormMessage />
+   </FormItem>
+ )}
+/>
+
     <div>
    
     </div>
@@ -64,7 +222,8 @@ export default function UpdateCompany(props: { id: number }) {
 
 
       <Button>Update</Button>
-     </form>
+      </form>
+     </Form>
       </div>
     );
   }

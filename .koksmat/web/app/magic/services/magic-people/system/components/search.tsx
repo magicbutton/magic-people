@@ -30,7 +30,12 @@ keep: false
       }
    
 
-    export default function SearchSystem() {
+    export default function SearchSystem(
+        props: {
+          onItemClick? : (item:SystemItem) => void
+        }
+
+    ) {
         const [transactionId, settransactionId] = useState(0);
         const search = useMemo(() => {
           return { text: "" };
@@ -48,6 +53,7 @@ keep: false
             <Input
               type="text"
               value={search.text}
+              className="mx-2"
               onChange={(e) => {
                 search.text = e.target.value;
                 settransactionId(transactionId + 1);
@@ -61,7 +67,13 @@ keep: false
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 ">
                   {searchResult.data.items.map((item, index) => {
                     return <div key={index}>
-                    <SystemSmallCard name={item.name} description={item.description} id={item.id} />
+                    <SystemSmallCard item={item} 
+                  
+                    onClick={()=>{
+                        if (props.onItemClick) {
+                            props.onItemClick(item)
+                    }}}
+                    />
 
                     
                     

@@ -44,15 +44,15 @@ export default function ReadCountry(props: { id: number }) {
     <div>
         <div>
         <div className="font-bold" >id</div>
-        <div>{country.number}</div>
+        <div>{country.id}</div>
     </div>
         <div>
         <div className="font-bold" >created_at</div>
-        <div>{country.number}</div>
+        <div>{country.created_at}</div>
     </div>
         <div>
         <div className="font-bold" >updated_at</div>
-        <div>{country.number}</div>
+        <div>{country.updated_at}</div>
     </div>
     </div>
     </div>}

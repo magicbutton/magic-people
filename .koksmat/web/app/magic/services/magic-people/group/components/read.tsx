@@ -47,15 +47,15 @@ export default function ReadGroup(props: { id: number }) {
     <div>
         <div>
         <div className="font-bold" >id</div>
-        <div>{group.number}</div>
+        <div>{group.id}</div>
     </div>
         <div>
         <div className="font-bold" >created_at</div>
-        <div>{group.number}</div>
+        <div>{group.created_at}</div>
     </div>
         <div>
         <div className="font-bold" >updated_at</div>
-        <div>{group.number}</div>
+        <div>{group.updated_at}</div>
     </div>
     </div>
     </div>}

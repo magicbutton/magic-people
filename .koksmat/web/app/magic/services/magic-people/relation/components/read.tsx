@@ -47,15 +47,15 @@ export default function ReadRelation(props: { id: number }) {
     <div>
         <div>
         <div className="font-bold" >id</div>
-        <div>{relation.number}</div>
+        <div>{relation.id}</div>
     </div>
         <div>
         <div className="font-bold" >created_at</div>
-        <div>{relation.number}</div>
+        <div>{relation.created_at}</div>
     </div>
         <div>
         <div className="font-bold" >updated_at</div>
-        <div>{relation.number}</div>
+        <div>{relation.updated_at}</div>
     </div>
     </div>
     </div>}

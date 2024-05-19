@@ -1,4 +1,14 @@
-
+    
+/* 
+File have been automatically created. To prevent the file from getting overwritten
+set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
+---
+keep: false
+---
+*/       
+"use client";
+import { z } from "zod";
+// spunk
 // Group
 export interface GroupItem  {
     id: number;
@@ -11,4 +21,16 @@ export interface GroupItem  {
     notesid : string ;
 
 }
+
+
+// Group
+export const GroupSchema = z.object({  
+   
+        tenant : z.string(), 
+    name : z.string(), 
+    description : z.string(), 
+    hidden : z.boolean(), 
+    notesid : z.string(), 
+
+});
 
