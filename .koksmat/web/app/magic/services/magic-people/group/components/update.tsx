@@ -7,7 +7,7 @@ keep: false
 */ 
 "use client";
 import { useService } from "@/koksmat/useservice";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import {GroupItem} from "../applogic/model";
 import {GroupSchema} from "../applogic/model";
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -50,10 +50,12 @@ export default function UpdateGroup(props: { id: number }) {
         })
       }
     const form = useForm<z.infer<typeof GroupSchema>>({
-        resolver: zodResolver(GroupSchema),
-        defaultValues: group,
+        resolver: zodResolver(GroupSchema)
       })
-  
+
+      useEffect(() => {
+        form.reset(group);
+      }, [group]);
     return (
       <div>
       <Form {...form}>

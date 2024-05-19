@@ -7,7 +7,7 @@ keep: false
 */ 
 "use client";
 import { useService } from "@/koksmat/useservice";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import {RelationItem} from "../applogic/model";
 import {RelationSchema} from "../applogic/model";
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -50,10 +50,12 @@ export default function UpdateRelation(props: { id: number }) {
         })
       }
     const form = useForm<z.infer<typeof RelationSchema>>({
-        resolver: zodResolver(RelationSchema),
-        defaultValues: relation,
+        resolver: zodResolver(RelationSchema)
       })
-  
+
+      useEffect(() => {
+        form.reset(relation);
+      }, [relation]);
     return (
       <div>
       <Form {...form}>

@@ -7,7 +7,7 @@ keep: false
 */ 
 "use client";
 import { useService } from "@/koksmat/useservice";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import {CountryItem} from "../applogic/model";
 import {CountrySchema} from "../applogic/model";
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -50,10 +50,12 @@ export default function UpdateCountry(props: { id: number }) {
         })
       }
     const form = useForm<z.infer<typeof CountrySchema>>({
-        resolver: zodResolver(CountrySchema),
-        defaultValues: country,
+        resolver: zodResolver(CountrySchema)
       })
-  
+
+      useEffect(() => {
+        form.reset(country);
+      }, [country]);
     return (
       <div>
       <Form {...form}>

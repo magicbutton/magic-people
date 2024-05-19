@@ -7,7 +7,7 @@ keep: false
 */ 
 "use client";
 import { useService } from "@/koksmat/useservice";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import {SystemItem} from "../applogic/model";
 import {SystemSchema} from "../applogic/model";
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -50,10 +50,12 @@ export default function UpdateSystem(props: { id: number }) {
         })
       }
     const form = useForm<z.infer<typeof SystemSchema>>({
-        resolver: zodResolver(SystemSchema),
-        defaultValues: system,
+        resolver: zodResolver(SystemSchema)
       })
-  
+
+      useEffect(() => {
+        form.reset(system);
+      }, [system]);
     return (
       <div>
       <Form {...form}>
