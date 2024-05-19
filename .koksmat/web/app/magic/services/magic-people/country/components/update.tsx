@@ -39,6 +39,16 @@ export default function UpdateCountry(props: { id: number }) {
       transactionId.toString()
     );
     const country = readResult.data;
+    return (
+      <div>{country && 
+      <CountryForm country={country}/>}
+     
+      </div>
+    );
+}
+
+export function CountryForm(props : {country: CountryItem}) {
+    const {country} = props;
     function onSubmit(data: z.infer<typeof CountrySchema>) {
         toast({
           title: "You submitted the following values:",
@@ -138,7 +148,7 @@ export default function UpdateCountry(props: { id: number }) {
     </div>}
 
 
-      <Button>Update</Button>
+      <Button  type="submit">Update</Button>
       </form>
      </Form>
       </div>

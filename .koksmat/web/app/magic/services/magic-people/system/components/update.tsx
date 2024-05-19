@@ -39,6 +39,16 @@ export default function UpdateSystem(props: { id: number }) {
       transactionId.toString()
     );
     const system = readResult.data;
+    return (
+      <div>{system && 
+      <SystemForm system={system}/>}
+     
+      </div>
+    );
+}
+
+export function SystemForm(props : {system: SystemItem}) {
+    const {system} = props;
     function onSubmit(data: z.infer<typeof SystemSchema>) {
         toast({
           title: "You submitted the following values:",
@@ -138,7 +148,7 @@ export default function UpdateSystem(props: { id: number }) {
     </div>}
 
 
-      <Button>Update</Button>
+      <Button  type="submit">Update</Button>
       </form>
      </Form>
       </div>

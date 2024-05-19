@@ -39,6 +39,11 @@ export default function UpdatePerson(props: { id: number }) {
     transactionId.toString()
   );
   const person = readResult.data;
+  return <div>{person && <PersonForm person={person} />}</div>;
+}
+
+export function PersonForm(props: { person: PersonItem }) {
+  const { person } = props;
   function onSubmit(data: z.infer<typeof PersonSchema>) {
     toast({
       title: "You submitted the following values:",
@@ -53,9 +58,9 @@ export default function UpdatePerson(props: { id: number }) {
     resolver: zodResolver(PersonSchema),
   });
 
-  // useEffect(() => {
-  //   form.reset(person);
-  // }, [person]);
+  useEffect(() => {
+    form.reset(person);
+  }, [person]);
   return (
     <div>
       <Form {...form}>
@@ -202,7 +207,7 @@ export default function UpdatePerson(props: { id: number }) {
             </div>
           )}
 
-          <Button>Update</Button>
+          <Button type="submit">Update</Button>
         </form>
       </Form>
     </div>

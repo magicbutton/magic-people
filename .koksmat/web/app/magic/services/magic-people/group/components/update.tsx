@@ -39,6 +39,16 @@ export default function UpdateGroup(props: { id: number }) {
       transactionId.toString()
     );
     const group = readResult.data;
+    return (
+      <div>{group && 
+      <GroupForm group={group}/>}
+     
+      </div>
+    );
+}
+
+export function GroupForm(props : {group: GroupItem}) {
+    const {group} = props;
     function onSubmit(data: z.infer<typeof GroupSchema>) {
         toast({
           title: "You submitted the following values:",
@@ -155,7 +165,7 @@ export default function UpdateGroup(props: { id: number }) {
     </div>}
 
 
-      <Button>Update</Button>
+      <Button  type="submit">Update</Button>
       </form>
      </Form>
       </div>

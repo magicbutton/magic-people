@@ -39,6 +39,16 @@ export default function UpdateCompany(props: { id: number }) {
       transactionId.toString()
     );
     const company = readResult.data;
+    return (
+      <div>{company && 
+      <CompanyForm company={company}/>}
+     
+      </div>
+    );
+}
+
+export function CompanyForm(props : {company: CompanyItem}) {
+    const {company} = props;
     function onSubmit(data: z.infer<typeof CompanySchema>) {
         toast({
           title: "You submitted the following values:",
@@ -223,7 +233,7 @@ export default function UpdateCompany(props: { id: number }) {
     </div>}
 
 
-      <Button>Update</Button>
+      <Button  type="submit">Update</Button>
       </form>
      </Form>
       </div>

@@ -39,6 +39,16 @@ export default function UpdateRelation(props: { id: number }) {
       transactionId.toString()
     );
     const relation = readResult.data;
+    return (
+      <div>{relation && 
+      <RelationForm relation={relation}/>}
+     
+      </div>
+    );
+}
+
+export function RelationForm(props : {relation: RelationItem}) {
+    const {relation} = props;
     function onSubmit(data: z.infer<typeof RelationSchema>) {
         toast({
           title: "You submitted the following values:",
@@ -155,7 +165,7 @@ export default function UpdateRelation(props: { id: number }) {
     </div>}
 
 
-      <Button>Update</Button>
+      <Button  type="submit">Update</Button>
       </form>
      </Form>
       </div>

@@ -39,6 +39,16 @@ export default function UpdateUser(props: { id: number }) {
       transactionId.toString()
     );
     const user = readResult.data;
+    return (
+      <div>{user && 
+      <UserForm user={user}/>}
+     
+      </div>
+    );
+}
+
+export function UserForm(props : {user: UserItem}) {
+    const {user} = props;
     function onSubmit(data: z.infer<typeof UserSchema>) {
         toast({
           title: "You submitted the following values:",
@@ -155,7 +165,7 @@ export default function UpdateUser(props: { id: number }) {
     </div>}
 
 
-      <Button>Update</Button>
+      <Button  type="submit">Update</Button>
       </form>
      </Form>
       </div>
