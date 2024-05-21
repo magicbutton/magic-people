@@ -13,9 +13,10 @@ import { z } from "zod";
 export interface CountryItem  {
     id: number;
     created_at: string;
+    created_by: string;
     updated_at: string;
-        tenant : string ;
-    name : string ;
+    updated_by: string;
+        name : string ;
     description : string ;
     code : string ;
 
@@ -25,8 +26,7 @@ export interface CountryItem  {
 // Country
 export const CountrySchema = z.object({  
    
-        tenant : z.string(), 
-    name : z.string(), 
+        name : z.string(), 
     description : z.string(), 
     code : z.string(), 
 

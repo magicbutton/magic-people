@@ -20,9 +20,10 @@ func MapCountryOutgoing(db database.Country) countrymodel.Country {
     return countrymodel.Country{
         ID:        db.ID,
         CreatedAt: db.CreatedAt,
+        CreatedBy: db.CreatedBy,
         UpdatedAt: db.UpdatedAt,
-                Tenant : db.Tenant,
-        Name : db.Name,
+        UpdatedBy: db.UpdatedBy,
+                Name : db.Name,
         Description : db.Description,
         Code : db.Code,
 
@@ -33,11 +34,13 @@ func MapCountryIncoming(in countrymodel.Country) database.Country {
     return database.Country{
         ID:        in.ID,
         CreatedAt: in.CreatedAt,
+        CreatedBy: in.CreatedBy,
         UpdatedAt: in.UpdatedAt,
-                Tenant : in.Tenant,
-        Name : in.Name,
+        UpdatedBy: in.UpdatedBy,
+                Name : in.Name,
         Description : in.Description,
         Code : in.Code,
+        Searchindex : in.Name,
 
     }
 }

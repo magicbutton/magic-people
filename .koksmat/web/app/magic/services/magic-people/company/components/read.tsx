@@ -29,9 +29,6 @@ export default function ReadCompany(props: { id: number }) {
           
     {company && <div>
         <div>
-        <div className="font-bold" >Tenant</div>
-        <div>{company.tenant}</div>
-    </div>    <div>
         <div className="font-bold" >Name</div>
         <div>{company.name}</div>
     </div>    <div>
@@ -66,8 +63,16 @@ export default function ReadCompany(props: { id: number }) {
         <div>{company.created_at}</div>
     </div>
         <div>
+        <div className="font-bold" >created_by</div>
+        <div>{company.created_by}</div>
+    </div>
+        <div>
         <div className="font-bold" >updated_at</div>
         <div>{company.updated_at}</div>
+    </div>
+        <div>
+        <div className="font-bold" >updated_by</div>
+        <div>{company.updated_by}</div>
     </div>
     </div>
     </div>}

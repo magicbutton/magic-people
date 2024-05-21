@@ -20,9 +20,10 @@ func MapRelationOutgoing(db database.Relation) relationmodel.Relation {
     return relationmodel.Relation{
         ID:        db.ID,
         CreatedAt: db.CreatedAt,
+        CreatedBy: db.CreatedBy,
         UpdatedAt: db.UpdatedAt,
-                Tenant : db.Tenant,
-        Name : db.Name,
+        UpdatedBy: db.UpdatedBy,
+                Name : db.Name,
         Description : db.Description,
                 Relation_id : db.Relation_id,
         Relationtype : db.Relationtype,
@@ -34,12 +35,14 @@ func MapRelationIncoming(in relationmodel.Relation) database.Relation {
     return database.Relation{
         ID:        in.ID,
         CreatedAt: in.CreatedAt,
+        CreatedBy: in.CreatedBy,
         UpdatedAt: in.UpdatedAt,
-                Tenant : in.Tenant,
-        Name : in.Name,
+        UpdatedBy: in.UpdatedBy,
+                Name : in.Name,
         Description : in.Description,
                 Relation_id : in.Relation_id,
         Relationtype : in.Relationtype,
+        Searchindex : in.Name,
 
     }
 }

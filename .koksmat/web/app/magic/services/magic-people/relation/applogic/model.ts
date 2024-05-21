@@ -13,9 +13,10 @@ import { z } from "zod";
 export interface RelationItem  {
     id: number;
     created_at: string;
+    created_by: string;
     updated_at: string;
-        tenant : string ;
-    name : string ;
+    updated_by: string;
+        name : string ;
     description : string ;
     relation_id : number ;
     relationtype : string ;
@@ -26,8 +27,7 @@ export interface RelationItem  {
 // Relation
 export const RelationSchema = z.object({  
    
-        tenant : z.string(), 
-    name : z.string(), 
+        name : z.string(), 
     description : z.string(), 
     relation_id : z.number(), 
     relationtype : z.string(), 

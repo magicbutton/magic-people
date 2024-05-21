@@ -20,6 +20,6 @@ import (
 func UserSearch(query string) (*Page[usermodel.User], error) {
     log.Println("Calling Usersearch")
 
-    return applogic.Search[database.User, usermodel.User]("name", query, applogic.MapUserOutgoing)
+    return applogic.Search[database.User, usermodel.User]("searchindex", query, applogic.MapUserOutgoing)
 
 }

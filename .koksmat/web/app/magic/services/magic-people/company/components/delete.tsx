@@ -6,11 +6,15 @@ set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
 keep: false
 ---
 */
-/* guldbar */
+import { Button } from "@/components/ui/button";
+/* spejderhagl */
 
-export default function DeleteCompany() {
+export default function DeleteCompany(props: { id: number ,onDeleteConfirmed:()=>void}) {
+    const { id,onDeleteConfirmed } = props;
 return (
 <div>
+<Button variant="destructive" onClick={onDeleteConfirmed}>Delete</Button><Button variant="secondary">Cancel</Button>
+
 
 </div>
 );

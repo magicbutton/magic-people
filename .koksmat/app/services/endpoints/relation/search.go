@@ -20,6 +20,6 @@ import (
 func RelationSearch(query string) (*Page[relationmodel.Relation], error) {
     log.Println("Calling Relationsearch")
 
-    return applogic.Search[database.Relation, relationmodel.Relation]("name", query, applogic.MapRelationOutgoing)
+    return applogic.Search[database.Relation, relationmodel.Relation]("searchindex", query, applogic.MapRelationOutgoing)
 
 }

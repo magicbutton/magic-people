@@ -5,6 +5,7 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import { run } from "@/koksmat/magicservices";
 import { Result } from "./httphelper";
 import { MagicboxContext } from "./magicbox-context";
+import { stat } from "fs";
 
 export const version = 1;
 
@@ -27,7 +28,9 @@ export function useService<T>(
   const status = useMemo(() => {
     return { running: false, key: "" };
   }, []);
-
+  const timing = useMemo(() => {
+    return { calledTimestamp: new Date() };
+  }, [servicename, timeout, args, transactionid]);
   useEffect(() => {
     const load = async () => {
       const key = transactionid + servicename + args.join(",");
@@ -43,7 +46,6 @@ export function useService<T>(
       //if (didRun) return;
 
       seterror("");
-      const calledTimestamp = new Date();
       console.log(
         "useService step 1",
         transactionid,
@@ -60,7 +62,7 @@ export function useService<T>(
         transactionid
       );
       magicbox.logServiceCall({
-        calledTimestamp,
+        calledTimestamp: timing.calledTimestamp,
         responedTimestamp: new Date(),
         request: {
           args,

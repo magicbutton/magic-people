@@ -1,5 +1,3 @@
-
-    "use client";
     /* 
 File have been automatically created. To prevent the file from getting overwritten
 set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
@@ -7,14 +5,19 @@ set the Front Matter property ´keep´ to ´true´ syntax for the code snippet
 keep: false
 ---
 */ 
-    /* guldbar */
+    "use client";
+    import { useService } from "@/koksmat/useservice";
+    import { useState } from "react";
+    import {GroupForm} from "./form";
     
+    import {GroupItem} from "../applogic/model";
     export default function CreateGroup() {
-    return (
-    <div>
-Create
-    
-    </div>
-    );
+       
+        const group = {} as GroupItem;
+        return (
+          <div>{group && 
+          <GroupForm group={group} editmode="create"/>}
+         
+          </div>
+        );
     }
-        

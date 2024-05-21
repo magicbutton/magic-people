@@ -29,9 +29,6 @@ export default function ReadPerson(props: { id: number }) {
           
     {person && <div>
         <div>
-        <div className="font-bold" >Tenant</div>
-        <div>{person.tenant}</div>
-    </div>    <div>
         <div className="font-bold" >Name</div>
         <div>{person.name}</div>
     </div>    <div>
@@ -66,8 +63,16 @@ export default function ReadPerson(props: { id: number }) {
         <div>{person.created_at}</div>
     </div>
         <div>
+        <div className="font-bold" >created_by</div>
+        <div>{person.created_by}</div>
+    </div>
+        <div>
         <div className="font-bold" >updated_at</div>
         <div>{person.updated_at}</div>
+    </div>
+        <div>
+        <div className="font-bold" >updated_by</div>
+        <div>{person.updated_by}</div>
     </div>
     </div>
     </div>}

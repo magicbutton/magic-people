@@ -20,9 +20,10 @@ func MapCompanyOutgoing(db database.Company) companymodel.Company {
     return companymodel.Company{
         ID:        db.ID,
         CreatedAt: db.CreatedAt,
+        CreatedBy: db.CreatedBy,
         UpdatedAt: db.UpdatedAt,
-                Tenant : db.Tenant,
-        Name : db.Name,
+        UpdatedBy: db.UpdatedBy,
+                Name : db.Name,
         Description : db.Description,
         Vatnumber : db.Vatnumber,
         Phonenumber : db.Phonenumber,
@@ -38,9 +39,10 @@ func MapCompanyIncoming(in companymodel.Company) database.Company {
     return database.Company{
         ID:        in.ID,
         CreatedAt: in.CreatedAt,
+        CreatedBy: in.CreatedBy,
         UpdatedAt: in.UpdatedAt,
-                Tenant : in.Tenant,
-        Name : in.Name,
+        UpdatedBy: in.UpdatedBy,
+                Name : in.Name,
         Description : in.Description,
         Vatnumber : in.Vatnumber,
         Phonenumber : in.Phonenumber,
@@ -48,6 +50,7 @@ func MapCompanyIncoming(in companymodel.Company) database.Company {
         City : in.City,
         Postalcode : in.Postalcode,
                 Country_id : in.Country_id,
+        Searchindex : in.Name,
 
     }
 }

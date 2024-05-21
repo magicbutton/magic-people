@@ -13,9 +13,10 @@ import { z } from "zod";
 export interface PersonItem  {
     id: number;
     created_at: string;
+    created_by: string;
     updated_at: string;
-        tenant : string ;
-    name : string ;
+    updated_by: string;
+        name : string ;
     description : string ;
     email : string ;
     displayname : string ;
@@ -30,8 +31,7 @@ export interface PersonItem  {
 // Person
 export const PersonSchema = z.object({  
    
-        tenant : z.string(), 
-    name : z.string(), 
+        name : z.string(), 
     description : z.string(), 
     email : z.string(), 
     displayname : z.string(), 

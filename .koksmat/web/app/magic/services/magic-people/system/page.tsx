@@ -8,18 +8,37 @@ keep: false
 ---
 */ 
 /* dumle */
+import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+  } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import SearchSystem from "@/app/magic/services/magic-people/system/components/search";
-/*
 import CreateSystem from "@/app/magic/services/magic-people/system/components/create";
-import ReadSystem from "@/app/magic/services/magic-people/system/components/read";
-import UpdateSystem from "@/app/magic/services/magic-people/system/components/update";
-import DeleteSystem from "@/app/magic/services/magic-people/system/components/delete";
-*/
+import {useState} from "react";
+
 export default function System() {
+    const [isCreating, setisCreating] = useState(false);
 return (
 <div>
-Search:<SearchSystem />
-
+<div>
+<Button variant="secondary" onClick={() => setisCreating(true)}>Create</Button>
+</div>
+<SearchSystem />
+<Sheet open={isCreating} onOpenChange={setisCreating}>
+<SheetContent>
+  <SheetHeader>
+    <SheetTitle>Create System</SheetTitle>
+    <SheetDescription>
+      <CreateSystem  />
+    </SheetDescription>
+  </SheetHeader>
+</SheetContent>
+</Sheet>
 </div>
 );
 }

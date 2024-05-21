@@ -20,6 +20,6 @@ import (
 func SystemSearch(query string) (*Page[systemmodel.System], error) {
     log.Println("Calling Systemsearch")
 
-    return applogic.Search[database.System, systemmodel.System]("name", query, applogic.MapSystemOutgoing)
+    return applogic.Search[database.System, systemmodel.System]("searchindex", query, applogic.MapSystemOutgoing)
 
 }

@@ -13,9 +13,10 @@ import { z } from "zod";
 export interface UserItem  {
     id: number;
     created_at: string;
+    created_by: string;
     updated_at: string;
-        tenant : string ;
-    name : string ;
+    updated_by: string;
+        name : string ;
     description : string ;
     system_id : number ;
     fullname : string ;
@@ -26,8 +27,7 @@ export interface UserItem  {
 // User
 export const UserSchema = z.object({  
    
-        tenant : z.string(), 
-    name : z.string(), 
+        name : z.string(), 
     description : z.string(), 
     system_id : z.number(), 
     fullname : z.string(), 

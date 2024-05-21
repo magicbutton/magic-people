@@ -29,9 +29,6 @@ export default function ReadCountry(props: { id: number }) {
           
     {country && <div>
         <div>
-        <div className="font-bold" >Tenant</div>
-        <div>{country.tenant}</div>
-    </div>    <div>
         <div className="font-bold" >Name</div>
         <div>{country.name}</div>
     </div>    <div>
@@ -51,8 +48,16 @@ export default function ReadCountry(props: { id: number }) {
         <div>{country.created_at}</div>
     </div>
         <div>
+        <div className="font-bold" >created_by</div>
+        <div>{country.created_by}</div>
+    </div>
+        <div>
         <div className="font-bold" >updated_at</div>
         <div>{country.updated_at}</div>
+    </div>
+        <div>
+        <div className="font-bold" >updated_by</div>
+        <div>{country.updated_by}</div>
     </div>
     </div>
     </div>}

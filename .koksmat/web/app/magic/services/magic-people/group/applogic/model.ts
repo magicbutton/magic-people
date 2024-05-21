@@ -13,9 +13,10 @@ import { z } from "zod";
 export interface GroupItem  {
     id: number;
     created_at: string;
+    created_by: string;
     updated_at: string;
-        tenant : string ;
-    name : string ;
+    updated_by: string;
+        name : string ;
     description : string ;
     hidden : boolean ;
     notesid : string ;
@@ -26,8 +27,7 @@ export interface GroupItem  {
 // Group
 export const GroupSchema = z.object({  
    
-        tenant : z.string(), 
-    name : z.string(), 
+        name : z.string(), 
     description : z.string(), 
     hidden : z.boolean(), 
     notesid : z.string(), 

@@ -20,9 +20,10 @@ func MapGroupOutgoing(db database.Group) groupmodel.Group {
     return groupmodel.Group{
         ID:        db.ID,
         CreatedAt: db.CreatedAt,
+        CreatedBy: db.CreatedBy,
         UpdatedAt: db.UpdatedAt,
-                Tenant : db.Tenant,
-        Name : db.Name,
+        UpdatedBy: db.UpdatedBy,
+                Name : db.Name,
         Description : db.Description,
         Notesid : db.Notesid,
 
@@ -33,11 +34,13 @@ func MapGroupIncoming(in groupmodel.Group) database.Group {
     return database.Group{
         ID:        in.ID,
         CreatedAt: in.CreatedAt,
+        CreatedBy: in.CreatedBy,
         UpdatedAt: in.UpdatedAt,
-                Tenant : in.Tenant,
-        Name : in.Name,
+        UpdatedBy: in.UpdatedBy,
+                Name : in.Name,
         Description : in.Description,
         Notesid : in.Notesid,
+        Searchindex : in.Name,
 
     }
 }

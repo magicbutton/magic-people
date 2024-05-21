@@ -20,9 +20,10 @@ func MapPersonOutgoing(db database.Person) personmodel.Person {
     return personmodel.Person{
         ID:        db.ID,
         CreatedAt: db.CreatedAt,
+        CreatedBy: db.CreatedBy,
         UpdatedAt: db.UpdatedAt,
-                Tenant : db.Tenant,
-        Name : db.Name,
+        UpdatedBy: db.UpdatedBy,
+                Name : db.Name,
         Description : db.Description,
         Email : db.Email,
         Displayname : db.Displayname,
@@ -38,9 +39,10 @@ func MapPersonIncoming(in personmodel.Person) database.Person {
     return database.Person{
         ID:        in.ID,
         CreatedAt: in.CreatedAt,
+        CreatedBy: in.CreatedBy,
         UpdatedAt: in.UpdatedAt,
-                Tenant : in.Tenant,
-        Name : in.Name,
+        UpdatedBy: in.UpdatedBy,
+                Name : in.Name,
         Description : in.Description,
         Email : in.Email,
         Displayname : in.Displayname,
@@ -48,6 +50,7 @@ func MapPersonIncoming(in personmodel.Person) database.Person {
         Lastname : in.Lastname,
         Uniqueid : in.Uniqueid,
                 Nationality_id : in.Nationality_id,
+        Searchindex : "email:" + in.Email  + "displayname:" + in.Displayname  + "uniqueid:" + in.Uniqueid ,
 
     }
 }

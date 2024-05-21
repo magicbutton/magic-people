@@ -10,30 +10,12 @@ package services
 
 import (
 	"encoding/json"
-	"fmt"
-	"log"
 
 	"github.com/magicbutton/magic-people/services/endpoints/app"
 	. "github.com/magicbutton/magic-people/utils"
 	"github.com/nats-io/nats.go/micro"
 )
 
-func ProcessAppRequest[T interface{}](req micro.Request, process func([]string) (*T, error)) {
-
-	var payload ServiceRequest
-	_ = json.Unmarshal([]byte(req.Data()), &payload)
-	args := payload.Args[1:]
-	result, err := process(args)
-	if err != nil {
-		log.Println("Error", err)
-		ServiceResponseError(req, fmt.Sprintf("%s", err))
-
-		return
-	}
-
-	ServiceResponse(req, result)
-
-}
 func HandleAppRequests(req micro.Request) {
 
 	rawRequest := string(req.Data())

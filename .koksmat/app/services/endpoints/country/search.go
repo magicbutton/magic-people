@@ -20,6 +20,6 @@ import (
 func CountrySearch(query string) (*Page[countrymodel.Country], error) {
     log.Println("Calling Countrysearch")
 
-    return applogic.Search[database.Country, countrymodel.Country]("name", query, applogic.MapCountryOutgoing)
+    return applogic.Search[database.Country, countrymodel.Country]("searchindex", query, applogic.MapCountryOutgoing)
 
 }

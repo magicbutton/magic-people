@@ -29,9 +29,6 @@ export default function ReadGroup(props: { id: number }) {
           
     {group && <div>
         <div>
-        <div className="font-bold" >Tenant</div>
-        <div>{group.tenant}</div>
-    </div>    <div>
         <div className="font-bold" >Name</div>
         <div>{group.name}</div>
     </div>    <div>
@@ -54,8 +51,16 @@ export default function ReadGroup(props: { id: number }) {
         <div>{group.created_at}</div>
     </div>
         <div>
+        <div className="font-bold" >created_by</div>
+        <div>{group.created_by}</div>
+    </div>
+        <div>
         <div className="font-bold" >updated_at</div>
         <div>{group.updated_at}</div>
+    </div>
+        <div>
+        <div className="font-bold" >updated_by</div>
+        <div>{group.updated_by}</div>
     </div>
     </div>
     </div>}

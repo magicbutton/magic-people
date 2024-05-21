@@ -20,6 +20,6 @@ import (
 func CompanySearch(query string) (*Page[companymodel.Company], error) {
     log.Println("Calling Companysearch")
 
-    return applogic.Search[database.Company, companymodel.Company]("name", query, applogic.MapCompanyOutgoing)
+    return applogic.Search[database.Company, companymodel.Company]("searchindex", query, applogic.MapCompanyOutgoing)
 
 }

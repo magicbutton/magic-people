@@ -134,6 +134,14 @@ baseattributes:
     - name: tenant
       type: string
       displayname: Tenant
+      hidden: true
+      required: true
+    - name: searchindex
+      type: string
+      displayname: Search Index
+      description: |
+        Search Index is used for concatenating all searchable fields in a single field making in easier to search
+      hidden: true
       required: true
     - name: name
       type: string
@@ -253,10 +261,12 @@ entities:
         displayname: Email
         type: string
         required: false
+        searchindex: true
       - name: displayname
         displayname: DisplayName
         type: string
         required: false
+        searchindex: true
       - name: firstname
         displayname: FirstName
         type: string
@@ -269,6 +279,8 @@ entities:
         displayname: Unique Id
         type: string
         required: true
+        searchindex: true
+
       - name: nationality
         displayname: Nationality
         type: reference

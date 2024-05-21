@@ -8,18 +8,37 @@ keep: false
 ---
 */ 
 /* dumle */
+import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+  } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import SearchPerson from "@/app/magic/services/magic-people/person/components/search";
-/*
 import CreatePerson from "@/app/magic/services/magic-people/person/components/create";
-import ReadPerson from "@/app/magic/services/magic-people/person/components/read";
-import UpdatePerson from "@/app/magic/services/magic-people/person/components/update";
-import DeletePerson from "@/app/magic/services/magic-people/person/components/delete";
-*/
+import {useState} from "react";
+
 export default function Person() {
+    const [isCreating, setisCreating] = useState(false);
 return (
 <div>
-Search:<SearchPerson />
-
+<div>
+<Button variant="secondary" onClick={() => setisCreating(true)}>Create</Button>
+</div>
+<SearchPerson />
+<Sheet open={isCreating} onOpenChange={setisCreating}>
+<SheetContent>
+  <SheetHeader>
+    <SheetTitle>Create Person</SheetTitle>
+    <SheetDescription>
+      <CreatePerson  />
+    </SheetDescription>
+  </SheetHeader>
+</SheetContent>
+</Sheet>
 </div>
 );
 }

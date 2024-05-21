@@ -26,9 +26,10 @@ func (r *Group) Marshal() ([]byte, error) {
 type Group struct {
     ID        int    `json:"id"`
     CreatedAt time.Time `json:"created_at"`
+    CreatedBy string `json:"created_by"`
     UpdatedAt time.Time `json:"updated_at"`
-        Tenant string `json:"tenant"`
-    Name string `json:"name"`
+    UpdatedBy string `json:"updated_by"`
+        Name string `json:"name"`
     Description string `json:"description"`
     Hidden bool `json:"hidden"`
     Notesid string `json:"notesid"`

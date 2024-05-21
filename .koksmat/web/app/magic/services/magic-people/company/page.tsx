@@ -8,18 +8,37 @@ keep: false
 ---
 */ 
 /* dumle */
+import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+  } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import SearchCompany from "@/app/magic/services/magic-people/company/components/search";
-/*
 import CreateCompany from "@/app/magic/services/magic-people/company/components/create";
-import ReadCompany from "@/app/magic/services/magic-people/company/components/read";
-import UpdateCompany from "@/app/magic/services/magic-people/company/components/update";
-import DeleteCompany from "@/app/magic/services/magic-people/company/components/delete";
-*/
+import {useState} from "react";
+
 export default function Company() {
+    const [isCreating, setisCreating] = useState(false);
 return (
 <div>
-Search:<SearchCompany />
-
+<div>
+<Button variant="secondary" onClick={() => setisCreating(true)}>Create</Button>
+</div>
+<SearchCompany />
+<Sheet open={isCreating} onOpenChange={setisCreating}>
+<SheetContent>
+  <SheetHeader>
+    <SheetTitle>Create Company</SheetTitle>
+    <SheetDescription>
+      <CreateCompany  />
+    </SheetDescription>
+  </SheetHeader>
+</SheetContent>
+</Sheet>
 </div>
 );
 }

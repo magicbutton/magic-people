@@ -26,9 +26,10 @@ func (r *Person) Marshal() ([]byte, error) {
 type Person struct {
     ID        int    `json:"id"`
     CreatedAt time.Time `json:"created_at"`
+    CreatedBy string `json:"created_by"`
     UpdatedAt time.Time `json:"updated_at"`
-        Tenant string `json:"tenant"`
-    Name string `json:"name"`
+    UpdatedBy string `json:"updated_by"`
+        Name string `json:"name"`
     Description string `json:"description"`
     Email string `json:"email"`
     Displayname string `json:"displayname"`

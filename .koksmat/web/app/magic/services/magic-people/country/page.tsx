@@ -8,18 +8,37 @@ keep: false
 ---
 */ 
 /* dumle */
+import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+  } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import SearchCountry from "@/app/magic/services/magic-people/country/components/search";
-/*
 import CreateCountry from "@/app/magic/services/magic-people/country/components/create";
-import ReadCountry from "@/app/magic/services/magic-people/country/components/read";
-import UpdateCountry from "@/app/magic/services/magic-people/country/components/update";
-import DeleteCountry from "@/app/magic/services/magic-people/country/components/delete";
-*/
+import {useState} from "react";
+
 export default function Country() {
+    const [isCreating, setisCreating] = useState(false);
 return (
 <div>
-Search:<SearchCountry />
-
+<div>
+<Button variant="secondary" onClick={() => setisCreating(true)}>Create</Button>
+</div>
+<SearchCountry />
+<Sheet open={isCreating} onOpenChange={setisCreating}>
+<SheetContent>
+  <SheetHeader>
+    <SheetTitle>Create Country</SheetTitle>
+    <SheetDescription>
+      <CreateCountry  />
+    </SheetDescription>
+  </SheetHeader>
+</SheetContent>
+</Sheet>
 </div>
 );
 }

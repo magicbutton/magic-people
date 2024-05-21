@@ -34,6 +34,18 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
+  import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+  } from "@/components/ui/alert-dialog"
+  
   import { Ellipsis } from "lucide-react";
   import { Button } from "@/components/ui/button";
   import {GroupItem} from "../applogic/model";
@@ -48,6 +60,7 @@ import {
    
     const [isEditing, setisEditing] = useState(false);
     const [isViewing, setisViewing] = useState(false);
+    const [isDeleting, setisDeleting] = useState(false);
 
 
     return (
@@ -89,6 +102,14 @@ import {
           >
             Edit
           </DropdownMenuItem>          
+          <DropdownMenuItem
+            onClick={(e) => {
+              e.stopPropagation();
+              setisDeleting(true);
+            }}
+          >
+            Delete
+          </DropdownMenuItem>          
           </DropdownMenuContent>
         </DropdownMenu>
 
@@ -120,6 +141,23 @@ import {
       </SheetHeader>
     </SheetContent>
   </Sheet>
+
+  <AlertDialog open={isDeleting} onOpenChange={setisDeleting}>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+      <AlertDialogDescription>
+        This action cannot be undone. This will permanently delete your account
+        and remove your data from our servers.
+      </AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Continue</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+
   </div>
     );
   }

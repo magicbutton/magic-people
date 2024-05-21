@@ -7,15 +7,20 @@ keep: false
 */   
 
 
-
+-- sure sild
 
 CREATE TABLE public.relation
 (
     id SERIAL PRIMARY KEY,
     created_at timestamp with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by character varying COLLATE pg_catalog."default"  ,
+
     updated_at timestamp with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_by character varying COLLATE pg_catalog."default" ,
+
     deleted_at timestamp with time zone
     ,tenant character varying COLLATE pg_catalog."default"  NOT NULL
+    ,searchindex character varying COLLATE pg_catalog."default"  NOT NULL
     ,name character varying COLLATE pg_catalog."default"  NOT NULL
     ,description character varying COLLATE pg_catalog."default" 
     ,relation_id int  
@@ -29,11 +34,15 @@ CREATE TABLE public.relation
                 REFERENCES public.company (id) MATCH SIMPLE
                 ON UPDATE NO ACTION
                 ON DELETE NO ACTION
-                NOT VALID;                CREATE TABLE public.relation_m2m_group (
+                NOT VALID;                -- lollipop
+                CREATE TABLE public.relation_m2m_group (
                 id SERIAL PRIMARY KEY,
                 created_at timestamp with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                created_by character varying COLLATE pg_catalog."default"  ,
                 updated_at timestamp with time zone NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                updated_by character varying COLLATE pg_catalog."default",
                 deleted_at timestamp with time zone
+                
                     ,relation_id int  
  
                     ,group_id int  

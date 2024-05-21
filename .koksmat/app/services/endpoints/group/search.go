@@ -20,6 +20,6 @@ import (
 func GroupSearch(query string) (*Page[groupmodel.Group], error) {
     log.Println("Calling Groupsearch")
 
-    return applogic.Search[database.Group, groupmodel.Group]("name", query, applogic.MapGroupOutgoing)
+    return applogic.Search[database.Group, groupmodel.Group]("searchindex", query, applogic.MapGroupOutgoing)
 
 }

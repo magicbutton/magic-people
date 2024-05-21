@@ -29,9 +29,6 @@ export default function ReadSystem(props: { id: number }) {
           
     {system && <div>
         <div>
-        <div className="font-bold" >Tenant</div>
-        <div>{system.tenant}</div>
-    </div>    <div>
         <div className="font-bold" >Name</div>
         <div>{system.name}</div>
     </div>    <div>
@@ -51,8 +48,16 @@ export default function ReadSystem(props: { id: number }) {
         <div>{system.created_at}</div>
     </div>
         <div>
+        <div className="font-bold" >created_by</div>
+        <div>{system.created_by}</div>
+    </div>
+        <div>
         <div className="font-bold" >updated_at</div>
         <div>{system.updated_at}</div>
+    </div>
+        <div>
+        <div className="font-bold" >updated_by</div>
+        <div>{system.updated_by}</div>
     </div>
     </div>
     </div>}

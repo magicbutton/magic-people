@@ -20,9 +20,10 @@ func MapSystemOutgoing(db database.System) systemmodel.System {
     return systemmodel.System{
         ID:        db.ID,
         CreatedAt: db.CreatedAt,
+        CreatedBy: db.CreatedBy,
         UpdatedAt: db.UpdatedAt,
-                Tenant : db.Tenant,
-        Name : db.Name,
+        UpdatedBy: db.UpdatedBy,
+                Name : db.Name,
         Description : db.Description,
         Version : db.Version,
 
@@ -33,11 +34,13 @@ func MapSystemIncoming(in systemmodel.System) database.System {
     return database.System{
         ID:        in.ID,
         CreatedAt: in.CreatedAt,
+        CreatedBy: in.CreatedBy,
         UpdatedAt: in.UpdatedAt,
-                Tenant : in.Tenant,
-        Name : in.Name,
+        UpdatedBy: in.UpdatedBy,
+                Name : in.Name,
         Description : in.Description,
         Version : in.Version,
+        Searchindex : in.Name,
 
     }
 }
