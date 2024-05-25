@@ -10,6 +10,7 @@
         "lint:fix": "next lint --fix"
     },
     "dependencies": {
+        "@ai-sdk/openai": "^0.0.14",
         "@azure/msal-browser": "^3.10.0",
         "@azure/msal-react": "^2.0.12",
         "@hookform/resolvers": "^3.3.4",
@@ -38,6 +39,7 @@
         "@tanstack/react-table": "^8.12.0",
         "@types/clipboard": "^2.0.7",
         "@types/react-syntax-highlighter": "^15.5.11",
+        "ai": "^3.1.13",
         "axios": "^1.6.7",
         "class-variance-authority": "^0.7.0",
         "clipboard": "^2.0.11",
