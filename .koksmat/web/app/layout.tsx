@@ -6,7 +6,7 @@ import { MSALWrapper } from "@/koksmat/msal/auth";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import { ThemeProvider } from "@/components/theme-provider";
 import Script from "next/script";
-import { ServiceInspector } from "@/components/service-inspector";
+import { ServiceInspector } from "@/koksmat/components/service-inspector";
 import { Toaster } from "@/components/ui/toaster";
 export default function RootLayout2({
   children,
